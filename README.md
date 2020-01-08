@@ -7,7 +7,7 @@
 4. `cd /App` 
 5. `npm install`
 
-## To run the app
-in the /App directory
-
-`npm start`
+## Running the app
+1. make sure you're in the /App directory
+2. run `npm start`
+3. open the app at localhost:3000 in a web browser
