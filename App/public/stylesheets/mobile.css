@@ -11,6 +11,7 @@ body {
     margin: auto;
 } 
 
+
 .row {
     display: flex;
     flex-direction: row;
@@ -24,7 +25,17 @@ body {
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    flex-grow: auto;
     justify-content: center;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    padding-right: 10px;
+    padding-left: 0px;
+    margin: 0;
 }
 
 label {
@@ -34,6 +45,17 @@ label {
     padding-right: 10px;
     padding-left: 0px;
 }
+
+
+.inputLogIn {
+    width: 300px;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 15px;
+    border-color: black;
+}
+
+
 
 input {
     width: 300px;
@@ -52,6 +74,14 @@ button {
     border-color: black;
 }
 
+.form-control {
+    width: 90%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 15px;
+    border-color: black;
+}
+
 img {
     width: 100%;
 }
@@ -59,5 +89,50 @@ img {
     padding: 10px;
 }
 
+#logo {
+    height: 100%;
+    width: 50%;
+    padding-left: 50px;
+    
+}
+#r1 {
+    padding-top: 20px;
+}
+
+#r2 {
+    margin-left: 55px;
+}
+#r3 {
+    padding-left: 250px;
+    padding-top: 5px;
+}
+
+#c1 {
+    width: 50%;
+}
+
+#c2 {
+    width: 55%;
+}
+
+#c3 {
+    width: 5%;
+}
+
+#c4 {
+    width: 30%;
+}
+
+#c5 {
+    width: 70%;
+}
+
+select {
+    width: 90%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 15px;
+    border-color: black;
+}
 
 
