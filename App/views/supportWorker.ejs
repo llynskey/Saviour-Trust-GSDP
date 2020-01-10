@@ -3,9 +3,9 @@
 <body> 
     <label for="inspectedProperties">inspected properties</label>
     <div class="row">
-    <div class="column-6">
+    <div class="column">
      <!--<label for="inspectedProperties">inspected properties</label>-->
-     <select class="custom-select" size="31">
+     <select class="custom-select" class="selectSupport" size="31">
         <option selected>Select a property to inspect...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -30,51 +30,94 @@
         </tr>
         <tr>
           <td>Kitchen</td>
-          <td>Jackson</td>
+          <td>NA</td>
         </tr>
         <tr>
           <td>Living room</td>
-          <td>Doe</td>
+          <td>NA</td>
         </tr>
         <tr>
             <td>staris</td>
-            <td>Doe</td>
+            <td>NA</td>
         </tr>
         <tr>
             <td>Toilet</td>
-            <td>Doe</td>
+            <td>NA</td>
         </tr>
         <tr>
             <td>Room 1</td>
-            <td>Doe</td>
+            <td>Na</td>
         </tr>
         <tr>
             <td>Room 2</td>
-            <td>Doe</td>
+            <td>NA</td>
         </tr>
         <tr>
             <td>Room 3</td>
-            <td>Doe</td>
+            <td>NA</td>
         </tr>
         <tr>
             <td>Room 4</td>
-            <td>Doe</td>
+            <td>NA</td>
         </tr>
       </table>
       <div class="row">
-
+        <div class="row">
+        <div class="column">
+        <label class="labelVisit" for="inlineCheckbox1">Smoke Alarm</label>
+        </div>
+        <div class="column">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        </div>
+        </div>
       </div>
 </div>
     
-    <div class="column-6">
-        <select class="custom-select" size="2">
-            <option selected>Select a property to inspect...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-         </select>  
+    <div class="column">
+        <div class="form-group">
+            <div class="row">
+            <label for="job" id = "jobCol">Create a job</label>
+            </div>
+            <label for="comment" id ="jobCol2">description of job:</label>
+            <textarea class="selectSupport" rows="5" id="comment"></textarea>
+          </div>
+          <div class="row">
+            <div class="column">
+            <input class="form-control"  placeholder="Job Title">
+            </div>
+            <div class="column">
+            <button type="button" class="creatJobBtn" id="createJobBtn" onclick="getDescriptionTxt()">Create</button>
+        </div>
+        </div >
+        <div class="row">
+            <table style="width:100%">
+               
+                <tr>
+                  <th>Job</th>
+                  <th width ="70%">Description</th> 
+                  <th>Progress</th>
+                </tr>
+                <tr>
+                  <td>Hallway</td>
+                  <td><script type="text/javascript">document.write(descriptionTxt)</script></td>
+                  <td><input id = "jobCheck" class="form-check" type="checkbox" id="inlineCheckbox1" value="option1" width="5px;" height="5px"></td>
+              </table>
+            <p>
+                <script type="text/javascript">document.write(descriptionTxt)</script>
+            </p>
+        </div>
+          
     </div>
     </div>
 </body>
+<script>
+var descriptionTxt;
+var titleTxt;
+
+function getDescriptionTxt(){
+    descriptionTxt = document.getElementById('comment').value;
+}
+
+</script>
 
 <%- include partials/footer.ejs %>
