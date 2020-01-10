@@ -1,23 +1,109 @@
 <%- include partials/header.ejs %>
 
 <body>
-    <form class="form-inline">
-        <label class="Location" for="inlineFormCustomSelectLocation">Property</label>
-        <select class="custom-select Location" id="inlineFormCustomSelectPref">
-          <option selected>Which loction are you visiting...</option>
-          <option value="1"></option>
-          <option value="2"></option>
-          <option value="3"></option>
-        </select>
-      
-        <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="customControlInline">
-          <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+  <div class="container">
+    <form class="visitorForm">
+      <div class="row" id="r1">
+        <div class="column" id="c4">
+          <div class="logo"><img src= "images/saviourTrustLogo.png" alt="" id="logo"/></div>
         </div>
-
-      </form>
-
+        <div class="column" id="c5">
+          <button type="button" class="LogOutBtn">LogOut</button>
+          <h1 class="labelVisit">Current User :</h1>
+          <label class="Location" for="inlineFormCustomSelectLocation">Property</label>
+          <select class="custom-select Location" id="inlineFormCustomSelectPref">
+            <option selected>Which loction are you visiting...</option>
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+          </select>
+        </div>
+      </div>
+        
+      <div class="spacer"></div>
+      <div class="row"><label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label></div>
+      <div class="row"><input type="text" class="form-control" id="inputvisits" placeholder="Notes about hallway"></div>
       
+      <div class="spacer"></div>
+      <div class="row"><label for="KitchenCheck" class="labelVisit">Kitchen</label></div>
+      <div class="row"><input type="text" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen"></div>
+      
+      <div class="spacer"></div>
+      <div class="row"><label for="LivingRoomCheck" class="labelVisit">Living Room</label></div>
+      <div class="row"><input type="text" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room"></div>
+
+      <div class="spacer"></div>
+      <div class="row"><label for="StairsCheck" class="labelVisit">Stairs/Landing</label></div>
+      <div class="row"><input type="text" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing"></div>
+
+      <div class="spacer"></div>
+      <div class="row"><label for="BathroomCheck" class="labelVisit">BathroomCheck</label></div>
+      <div class="row"><input type="text" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom"></div>
+
+      <div class="spacer"></div>
+      <div class="row"><label for="ToiletCheck" class="labelVisit">Toilet Check</label></div>
+      <div class="row">
+        <select name = "Toilet">
+          <option value = "Good"> Good</option>
+          <option value = "OK"> OK</option>
+          <option value = "Poor"> Poor</option>
+        </select>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="row">
+        <label for="Tenant1Room" class="labelVisit">Tenant 1's Room</label>
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <h1 class="labelVisit">TenantPresent</h1>
+      </div>
+      <div class="row"><input type="text" class="form-control" id="Tenant1Room" placeholder="Notes about Tenant1Room"></div>
+
+      <div class="spacer"></div>
+      <div class="row"> 
+        <label for="Tenant2Room" class="labelVisit">Tenant 2's Room</label>
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <h1 class="labelVisit">TenantPresent</h1>
+
+      </div>
+      <div class="row"><input type="text" class="form-control" id="Tenant2Room" placeholder="Notes about Tenant2Room"></div>
+
+      <div class="spacer"></div>
+      <div class="row"> 
+        <label for="Tenant3Room" class="labelVisit">Tenant 3's Room</label>
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+        <h1 class="labelVisit">TenantPresent</h1>
+
+      </div>
+      <div class="row"><input type="text" class="form-control" id="Tenant3Room" placeholder="Notes about Tenant3Room"></div>
+
+      <div class="spacer"></div>
+      <div class="row">
+        <label for="Tenant4Room" class="labelVisit">Tenant 4's Room</label>
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+        <h1 class="labelVisit">TenantPresent</h1>
+        
+      </div>
+      <div class="row"><input type="text" class="form-control" id="Tenant4Room" placeholder="Notes about Tenant4Room"></div>
+      
+      <div class="spacer"></div>
+      <div class="row"><label class="labelVisit" for="inlineCheckbox1">Smoke Alarm</label></div>
+      <div class="row"><input type="text" class="form-control" id="Smoke Alarm Fault" placeholder="Faults?"></div>
+
+      <div class="spacer"></div>
+      <div class="row" id="r2"><label class="labelVisit" for="Applicances">FRIDGE/FREEZER | WASHER | MICROWAVE | KETTLE | HOOVER | FRYER | TOASTER</label></div>
+      <div class="row"><input type="text" class="form-control" id="applianceNotes" placeholder="Notes to above"></div>
+    
+      <div class="spacer"></div>
+      <div class="row"><label for="labelVisit">Image of fault</label></div>
+      <div class="row" id="r3"><input type="file" class="form-control" id="fileImage"></div>
+
+      <div class="spacer"></div>
+      <div class="row"><input type="text" class="form-control" id="ExtraNotes" placeholder="Extra Notes if Needed"></div>
+
+      <div class="spacer"></div>
+      <div class="row"><button type="submit" class="btn btn-primary" value="Submit">Submit</button></div>
+    </form>
+  </div>
 </body>
 
 <%- include partials/footer.ejs %>
