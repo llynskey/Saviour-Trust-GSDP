@@ -22,6 +22,7 @@ const connection = mysql.createConnection({
     housrArray = connection.query(query);
     console.log(houseArray);
     connection.end();
+    return(houseArray);
   };
 
   // getting the information from visit form 
