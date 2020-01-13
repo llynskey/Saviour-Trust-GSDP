@@ -75,8 +75,6 @@ app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', indexRouter);
 
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
