@@ -7,6 +7,8 @@ var passport = require('passport')
 var strategy = require('passport-local').Strategy;
 var db = require('./db');
 
+var mysql = require('mysql');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
@@ -76,7 +78,13 @@ app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', logoutRouter);
 
-
+const houseConnect = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'SaviourTrust44',
+  port: 3306,
+  database: 'House'
+});
 
 // getting the information from visit form 
 app.post('/visitHouse', function (req, res)
@@ -94,11 +102,26 @@ app.post('/visitHouse', function (req, res)
     room2: req.body.room2,
     room3: req.body.room3,
     room4: req.body.room4,
-    smokeAlarmFaults: req.body.smokeAlarmFault,
-    electronicFault: req.body.electronics
+    smokeAlarm: req.body.smokeAlarmFault,
+    electronicNote: req.body.electronics
     
   }
+  houseConnect.connect();
+  var query = houseConnect.query('insert into House set ?', visit, function (err, result){
+    if(err)
+    {
+      // if there is an error it will be displayed on the console
+      console.error(err);
+      return;
+    }
+    console.error(result);
+  });
+
 });
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

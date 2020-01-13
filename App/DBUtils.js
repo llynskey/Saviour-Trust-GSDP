@@ -6,12 +6,12 @@ const SELECT_ALL_HOUSES_QUERY = 'SELECT * FROM House';
 const SELECT_ALL_WORKERS_QUERY = 'SELECT * FROM Worker';
 const SELECT_ALL_ROOMS_QUERY = 'SELECT * FROM Room';
 
-const connection = mysql.createConnection({
+const houseConnect = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'SaviourTrust44',
     port: 3306,
-    database: 'test'
+    database: 'House'
   });
 
 connection.connect();
