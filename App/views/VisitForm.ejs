@@ -11,9 +11,10 @@
           <button type="button" class="LogOutBtn" onclick="location.href='/logout';">LogOut</button>
           <h1 class="labelVisit">You are logged in as: <%=user.displayName%></h1>
           <label class="Location" for="inlineFormCustomSelectLocation">Property</label>
-          <select class="custom-select Location" id="inlineFormCustomSelectPref">
+          <select class="custom-select Location" name ="houseDropDown" id="inlineFormCustomSelectPref">
             <option selected>Which location are you visiting...</option>
-            <option value="1"></option>
+            
+            <option value="1"> </option>
             <option value="2"></option>
             <option value="3"></option>
           </select>

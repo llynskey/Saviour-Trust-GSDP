@@ -1,28 +1,45 @@
 var mysql = require('mysql');
 var express = require('express');
-
+var visitRouter = require('../routes/VisitForm');
 var router = express.Router();
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'SaviourTrust44',
+    password: '',
     port: 3306,
-    database: 'SaviourTrust'
+    database: 'test'
   });
   
-  module.exports.getHouse = (err, result) =>
+  // function to get an array of house addresses
+  module.exports.getHouse = (callback) =>
   {
-    let houseArray = [];
-    var query = 'SELECT houseNumber, street from House';
+      var query = 'SELECT houseNumber, street from House';
+      
+      connection.connect()
+      
+      // creating array and storing house names
+      connection.query(query, function(err, dbRes) {
+        if (err)
+            console.log(err);
+        let houseArray = [];
+        houseArray = dbRes;
+        
+        var select = req.body.houseDropDown;
+        for(let i = 0; i < houseArray.length; i++)
+        {
+            // getting next address in the array
+            var address = houseArray[i].houseNumber + " " + houseArray[i].street;
+            select.add(new Option(address));
+        }
 
-    connection.connect()
-
-    // creating array and storing house names
-    housrArray = connection.query(query);
-    console.log(houseArray);
-    connection.end();
-    return(houseArray);
+   
+     
+        console.log(address);
+        connection.end();
+        callback(houseArray);
+    });
   };
 
   // getting the information from visit form 
