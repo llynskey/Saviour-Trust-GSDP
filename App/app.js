@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
 var supportRouter = require('./routes/support');
-
+var logoutRouter = require('./routes/logout');
 /*
 passport.use(new strategy(
   function(username, password, done) {
@@ -28,6 +28,7 @@ passport.use(new strategy(
   }
 ));
 */
+
 
 passport.use(new strategy(
   function(username, password, cb) {
@@ -73,7 +74,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
-app.use('/logout', indexRouter);
+app.use('/logout', logoutRouter);
 
 
 
