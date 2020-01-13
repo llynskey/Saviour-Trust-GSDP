@@ -1,7 +1,9 @@
 body {
-    margin: 0;
-    padding: 0;
+	font-family: "Open Sans", helvetica, arial, hevetica, sans-serif;
+	margin: 0;
+	padding: 0;
     background-color: #FEC81E;
+    background-image: ("images/footer.png");
 }
 
 .container {
@@ -54,6 +56,69 @@ label {
     border-radius: 15px;
     border-color: black;
 }
+.spacer {
+    padding: 10px;
+}
+::-webkit-input-placeholder {
+  text-align: center;
+}
+.logoSupport {    
+	flex-basis: 30%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.supportWorkerPage {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+.supportPage {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.propertySelection {
+    display: flex;
+    flex-basis: 10%;
+}
+.tableDetails {
+    display: flex;
+    flex-direction: row;
+    flex-basis:60%
+}
+.appliance {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 10%;
+}
+.imageSelection {
+   display: flex;
+   flex-direction: row;
+   flex-basis:10%;
+   flex-wrap: wrap;
+   width: 100%;
+   
+}
+.smallImages {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.imagesOfAppliance {
+    display: flex;
+    justify-content: center;
+}
+.applianceImg {
+    display: flex;
+    float: left;
+}
 
 
 
@@ -81,26 +146,54 @@ button {
     border-radius: 15px;
     border-color: black;
 }
-
-img {
+.selectSupport {
     width: 100%;
+}
+.propertySelect {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 50px;
 }
 .spacer {
     padding: 10px;
 }
-
-#logo {
-    height: 100%;
-    width: 50%;
-    padding-left: 50px;
-    
+.submit {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 50px;
 }
-#r1 {
-    padding-top: 20px;
+.visitFormLbl {
+	display: flex;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
 }
 
-#r2 {
-    margin-left: 55px;
+#appliance {
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+    width:100%;
+    max-width:50px;
+}
+.visit-form-control {
+	width: 100%;
+	display: flex;
+	flex-basis: 50%;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
+	width: 100%;
 }
 #r3 {
     padding-left: 250px;
@@ -111,12 +204,53 @@ img {
     width: 50%;
 }
 
-#c2 {
-    width: 55%;
+
+#applianceNotesLbl {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+#imagesOfAppliance {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+#toiletSelect {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
 }
 
 #c3 {
     width: 5%;
+}
+#currentUserLvl {
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 15px;
+    padding: 0;
+	margin: 0;
+}
+#supportLbl {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
 }
 
 #c4 {
@@ -127,12 +261,80 @@ img {
     width: 70%;
 }
 
-select {
-    width: 90%;
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+  /* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 2px;
+    width:100%;
+    max-width:50px;  
+    
+    display: flex;
+    justify-content: center;
+}
+  
+  #myImg:hover {opacity: 0.7;}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  #jobCheck{
+    width: 35px;
     height: 35px;
+  }
+#logoutBtn {
+	width: 100%;
+    height: 50px;
     font-size: 35px;
     border-radius: 15px;
     border-color: black;
 }
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
 
+
+#usernameLbl {
+	display: flex;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
 
