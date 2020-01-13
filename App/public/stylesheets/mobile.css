@@ -182,29 +182,27 @@ label {
 
 
 
-input {
-    width: 300px;
-    height: 35px;
-    font-size: 35px;
-    border-radius: 15px;
-    border-color: black;
+.logo {
+	flex-basis: 40%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
 }
-
-button {
-    width: 300px;
-    height: 50px;
-    font-size: 35px;
-    background-color: #424A9D;
-    border-radius: 15px;
-    border-color: black;
+.supportWorkerPage {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
 }
-
-.form-control {
-    width: 90%;
-    height: 35px;
-    font-size: 35px;
-    border-radius: 15px;
-    border-color: black;
+.supportPage {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
 }
 .selectSupport {
     width: 100%;
@@ -312,6 +310,13 @@ button {
     padding: 0;
 	margin: 0;
 }
+#supportLbl {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
 
 #propertyLbl {
 	font-family: Arial, Helvetica, sans-serif;
@@ -324,9 +329,6 @@ button {
 #c4 {
     width: 30%;
 }
-
-
-
 
 table {
     font-family: arial, sans-serif;
