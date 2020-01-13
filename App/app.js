@@ -7,7 +7,7 @@ var passport = require('passport')
 var strategy = require('passport-local').Strategy;
 var db = require('./db');
 
-var mysql = require('mysql');
+const sqlConnection = require('./controllers/DBUtils');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -78,47 +78,8 @@ app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', logoutRouter);
 
-const houseConnect = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'SaviourTrust44',
-  port: 3306,
-  database: 'SaviourTrust'
-});
+ app.post('/getHouse', sqlConnection.getHouse);
 
-// getting the information from visit form 
-app.post('/visitHouse', function (req, res)
-{
-  console.log(req.body);
-
-  res.redirect('/visit');
-
-  var visit = {
-    kitchen: req.body.kitchen,
-    livingRoom: req.body.livingRoom,
-    stairsLanding: req.body.stairsLanding,
-    bathroom: req.body.bathroom,
-   // room1: req.body.room1,
-   // room2: req.body.room2,
-   // room3: req.body.room3,
-   // room4: req.body.room4,
-    smokeAlarm: req.body.smokeAlarmFault,
-    electronicsNote: req.body.electronics
-    
-  }
-  houseConnect.connect();
-  var query = houseConnect.query('insert into House set ?', visit, function (err, result){
-    if(err)
-    {
-      // if there is an error it will be displayed on the console
-      console.error(err);
-      return;
-    }
-    console.error(result);
-  });
-	houseConnect.end();
-
-});
 
 
 

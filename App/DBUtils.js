@@ -47,7 +47,4 @@ var query = connection.query('insert into names set ?', names, function (err, re
 */
     
 
-  
 
-  
-*/
