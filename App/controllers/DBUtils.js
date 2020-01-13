@@ -7,13 +7,13 @@ var router = express.Router();
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'SaviourTrust44',
     port: 3306,
-    database: 'test'
+    database: 'saviourtrust'
   });
   
   // function to get an array of house addresses
-  module.exports.getHouse = (callback) =>
+  module.exports.getHouses = (callback) =>
   {
       var query = 'SELECT houseNumber, street from House';
       
@@ -26,19 +26,22 @@ const connection = mysql.createConnection({
         let houseArray = [];
         houseArray = dbRes;
         
-        var select = req.body.houseDropDown;
+        let addressArray =[];
+       // var select = req.body.houseDropDown;
         for(let i = 0; i < houseArray.length; i++)
         {
             // getting next address in the array
             var address = houseArray[i].houseNumber + " " + houseArray[i].street;
-            select.add(new Option(address));
+            //alert(address);
+            addressArray.push(address);
+           
         }
-
+        console.log(addressArray);
    
      
-        console.log(address);
+        //console.log(houseArray);
         connection.end();
-        callback(houseArray);
+        callback(addressArray);
     });
   };
 

@@ -4,10 +4,10 @@ var dbUtils = require('../controllers/DBUtils');
 
 /* GET home page. */
 router.get('/', 
-require('connect-ensure-login').ensureLoggedIn(),
+//require('connect-ensure-login').ensureLoggedIn(),
 function(req, res, next) {
 
-  dbUtils.getHouse(function(data) {
+  dbUtils.getHouses(function(data) {
     var houses = data;
     
     console.log(JSON.stringify(houses));
