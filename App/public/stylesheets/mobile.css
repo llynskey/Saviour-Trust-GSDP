@@ -122,6 +122,66 @@ label {
 
 
 
+.logo {
+	flex-basis: 40%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.supportWorkerPage {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+.supportPage {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.propertySelection {
+    display: flex;
+    flex-basis: 10%;
+}
+.tableDetails {
+    display: flex;
+    flex-direction: row;
+    flex-basis:60%
+}
+.appliance {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 10%;
+}
+.imageSelection {
+   display: flex;
+   flex-direction: row;
+   flex-basis:10%;
+   flex-wrap: wrap;
+   width: 100%;
+   
+}
+.smallImages {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.imagesOfAppliance {
+    display: flex;
+    justify-content: center;
+}
+.applianceImg {
+    display: flex;
+    float: left;
+}
+
+
+
 input {
     width: 300px;
     height: 35px;
@@ -253,13 +313,20 @@ button {
 	margin: 0;
 }
 
+#propertyLbl {
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
+
 #c4 {
     width: 30%;
 }
 
-#c5 {
-    width: 70%;
-}
+
+
 
 table {
     font-family: arial, sans-serif;
