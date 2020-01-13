@@ -1,7 +1,11 @@
 <%- include partials/header.ejs %>
+<head>
 
+</head>
 <body> 
-    <label for="inspectedProperties">inspected properties</label>
+    <div class="a">
+    <label for="supportpage" >Support Worker Page</label>
+    </div>
     <div class="row">
     <div class="column">
      <!--<label for="inspectedProperties">inspected properties</label>-->
@@ -13,9 +17,6 @@
      </select>
     </div> 
 <div class="column">
-    <div class="row">
-    <label for="Table" id = "ExtraNotesTable">Extra Notes</label> 
-    </div>    
     <table style="width:100%">
         <col width = "20%">
         <col width = "80%">
@@ -62,62 +63,99 @@
         </tr>
       </table>
       <div class="row">
-        <div class="row">
-        <div class="column">
-        <label class="labelVisit" for="inlineCheckbox1">Smoke Alarm</label>
-        </div>
-        <div class="column">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-        </div>
-        </div>
+        <label for="comment">Additional notes</label>
+        <textarea class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
       </div>
+     
 </div>
     
     <div class="column">
-        <div class="form-group">
-            <div class="row">
-            <label for="job" id = "jobCol">Create a job</label>
-            </div>
-            <label for="comment" id ="jobCol2">description of job:</label>
-            <textarea class="selectSupport" rows="5" id="comment"></textarea>
-          </div>
-          <div class="row">
-            <div class="column">
-            <input class="form-control"  placeholder="Job Title">
-            </div>
-            <div class="column">
-            <button type="button" class="creatJobBtn" id="createJobBtn" onclick="getDescriptionTxt()">Create</button>
+      <div class="row">
+        <label for="comment">Applience Notes</label><!--fill with info from any ectra notes-->
+        <textarea Width ="100%"class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
+      </div>
+      <div class="row">
+        <label for="comment">Images of appliences</label>
+
+      </div>
+       <div class="row">
+          <div class="column">
+        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
         </div>
-        </div >
-        <div class="row">
-            <table style="width:100%">
-               
-                <tr>
-                  <th>Job</th>
-                  <th width ="70%">Description</th> 
-                  <th>Progress</th>
-                </tr>
-                <tr>
-                  <td>Hallway</td>
-                  <td><script type="text/javascript">document.write(descriptionTxt)</script></td>
-                  <td><input id = "jobCheck" class="form-check" type="checkbox" id="inlineCheckbox1" value="option1" width="5px;" height="5px"></td>
-              </table>
-            <p>
-                <script type="text/javascript">document.write(descriptionTxt)</script>
-            </p>
+        <div class="column">
+        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
         </div>
-          
+        <div class="column">
+        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
+        </div>
+        <div class="column">
+        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
+        </div>
+        <div class="column">
+        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
+        </div>
+        <div class="column">
+        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
+        </div>
+        <div class="column">
+       <!-- Trigger the Modal -->
+<img id="myImg" src="images/saviourTrustLogo.png" alt="Snow" style="width:100%;max-width:300px">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+</div>
+        </div>
+
+        <table style="width:100%">
+        
+        <tr>
+          <th width = "20%">Alarm</th>
+          <th width = "20%">Working</th>
+          <th width = "60%">faults</th>
+        </tr>
+        <tr>
+          <td>Smoke Alarm</td>
+          <td><input class="form-check-input" type="checkbox"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>CM Alarm</td>
+          <td><input class="form-check-input" type="checkbox"></td>
+          <td></td>
+        </tr>
+        </table>
     </div>
     </div>
 </body>
-<script>
-var descriptionTxt =15;
-var titleTxt;
 
-function getDescriptionTxt(){
-    descriptionTxt = document.getElementById('comment').value;
+<script>
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
 }
 
-</script>
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+  
+  </script>
 
 <%- include partials/footer.ejs %>
