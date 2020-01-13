@@ -1,8 +1,4 @@
-<%- include partials/header.ejs %>
-
- <!-- <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p> -->
-
+<%- include partials/header.ejs%>
 <body>
   <div class="container">
     <div class="row">
@@ -18,26 +14,24 @@
     <div class="spacer"></div>
     <div class="spacer"></div>
 
-    <form>
+    <form action="/login" method="POST">
         <div class="row">
             <label for = "Usename">Username</label> 
-            <input type="text" class="form-control" id="Username1" placeholder="  Enter Username">
+            <input type="text" class="form-control" name="username" placeholder="   Enter Username">
         </div>
       </div>
       <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="loginButton">
-        <button type="submit" class="button" id="submitBtn">LogIn</button>
+        <input type="password" class="form-control" name="password" placeholder="   Enter Password">                 
       </div>
         <div class="spacer"></div>
         <div class="spacer"></div>
         
         <div class="row">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="button" id="submitBtn" value="submit">Submit</button>
         </div>
       </form> 
 
-  </div>
-</body>
+      
 
+</body>
 <%- include partials/footer.ejs %>
