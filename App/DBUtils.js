@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+/*const mysql = require('mysql');
 
 let INSERT_NAME_QUERY = 'INSERT INTO names(firstName, lastName) VALUES(Chris,Brewster)';
 const SELECT_ALL_SERVICEUSER_QUERY = 'SELECT lastName FROM names';
@@ -50,3 +50,4 @@ var query = connection.query('insert into names set ?', names, function (err, re
   
 
   
+*/

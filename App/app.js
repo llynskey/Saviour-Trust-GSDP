@@ -83,7 +83,7 @@ const houseConnect = mysql.createConnection({
   user: 'root',
   password: 'SaviourTrust44',
   port: 3306,
-  database: 'House'
+  database: 'SaviourTrust'
 });
 
 // getting the information from visit form 
@@ -98,12 +98,12 @@ app.post('/visitHouse', function (req, res)
     livingRoom: req.body.livingRoom,
     stairsLanding: req.body.stairsLanding,
     bathroom: req.body.bathroom,
-    room1: req.body.room1,
-    room2: req.body.room2,
-    room3: req.body.room3,
-    room4: req.body.room4,
+   // room1: req.body.room1,
+   // room2: req.body.room2,
+   // room3: req.body.room3,
+   // room4: req.body.room4,
     smokeAlarm: req.body.smokeAlarmFault,
-    electronicNote: req.body.electronics
+    electronicsNote: req.body.electronics
     
   }
   houseConnect.connect();
@@ -116,6 +116,7 @@ app.post('/visitHouse', function (req, res)
     }
     console.error(result);
   });
+	houseConnect.end();
 
 });
 
