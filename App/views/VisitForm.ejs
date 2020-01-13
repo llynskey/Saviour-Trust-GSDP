@@ -2,7 +2,7 @@
 
 <body>
   <div class="container">
-    <form class="visitorForm">
+    <form class="visitorForm" action="/visitHouse" method="post">
       <div class="row" id="r1">
         <div class="column" id="c4">
           <div class="logo"><img src= "images/saviourTrustLogo.png" alt="" id="logo"/></div>
@@ -22,23 +22,23 @@
         
       <div class="spacer"></div>
       <div class="row"><label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label></div>
-      <div class="row"><input type="text" class="form-control" id="inputvisits" placeholder="Notes about hallway"></div>
+      <div class="row"><input type="text" name ="hallway" class="form-control" id="inputvisits" placeholder="Notes about hallway"></div>
       
       <div class="spacer"></div>
       <div class="row"><label for="KitchenCheck" class="labelVisit">Kitchen</label></div>
-      <div class="row"><input type="text" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen"></div>
+      <div class="row"><input type="text" name ="kitchen" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen"></div>
       
       <div class="spacer"></div>
       <div class="row"><label for="LivingRoomCheck" class="labelVisit">Living Room</label></div>
-      <div class="row"><input type="text" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room"></div>
+      <div class="row"><input type="text" name="livingRoom" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room"></div>
 
       <div class="spacer"></div>
       <div class="row"><label for="StairsCheck" class="labelVisit">Stairs/Landing</label></div>
-      <div class="row"><input type="text" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing"></div>
+      <div class="row"><input type="text" name="stairsLanding" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing"></div>
 
       <div class="spacer"></div>
       <div class="row"><label for="BathroomCheck" class="labelVisit">BathroomCheck</label></div>
-      <div class="row"><input type="text" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom"></div>
+      <div class="row"><input type="text" name="bathroom" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom"></div>
 
       <div class="spacer"></div>
       <div class="row"><label for="ToiletCheck" class="labelVisit">Toilet Check</label></div>
@@ -56,7 +56,7 @@
         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
         <h1 class="labelVisit">TenantPresent</h1>
       </div>
-      <div class="row"><input type="text" class="form-control" id="Tenant1Room" placeholder="Notes about Tenant1Room"></div>
+      <div class="row"><input type="text" name="room1" class="form-control" id="Tenant1Room" placeholder="Notes about Tenant1Room"></div>
 
       <div class="spacer"></div>
       <div class="row"> 
@@ -65,7 +65,7 @@
         <h1 class="labelVisit">TenantPresent</h1>
 
       </div>
-      <div class="row"><input type="text" class="form-control" id="Tenant2Room" placeholder="Notes about Tenant2Room"></div>
+      <div class="row"><input type="text" name="room2" class="form-control" id="Tenant2Room" placeholder="Notes about Tenant2Room"></div>
 
       <div class="spacer"></div>
       <div class="row"> 
@@ -74,7 +74,7 @@
         <h1 class="labelVisit">TenantPresent</h1>
 
       </div>
-      <div class="row"><input type="text" class="form-control" id="Tenant3Room" placeholder="Notes about Tenant3Room"></div>
+      <div class="row"><input type="text" name="room3" class="form-control" id="Tenant3Room" placeholder="Notes about Tenant3Room"></div>
 
       <div class="spacer"></div>
       <div class="row">
@@ -83,15 +83,15 @@
         <h1 class="labelVisit">TenantPresent</h1>
         
       </div>
-      <div class="row"><input type="text" class="form-control" id="Tenant4Room" placeholder="Notes about Tenant4Room"></div>
+      <div class="row"><input type="text" name="room4" class="form-control" id="Tenant4Room" placeholder="Notes about Tenant4Room"></div>
       
       <div class="spacer"></div>
       <div class="row"><label class="labelVisit" for="inlineCheckbox1">Smoke Alarm</label></div>
-      <div class="row"><input type="text" class="form-control" id="Smoke Alarm Fault" placeholder="Faults?"></div>
+      <div class="row"><input type="text" name="smokeAlarmFault" class="form-control" id="Smoke Alarm Fault" placeholder="Faults?"></div>
 
       <div class="spacer"></div>
       <div class="row" id="r2"><label class="labelVisit" for="Applicances">FRIDGE/FREEZER | WASHER | MICROWAVE | KETTLE | HOOVER | FRYER | TOASTER</label></div>
-      <div class="row"><input type="text" class="form-control" id="applianceNotes" placeholder="Notes to above"></div>
+      <div class="row"><input type="text" name="electronics" class="form-control" id="applianceNotes" placeholder="Notes to above"></div>
     
       <div class="spacer"></div>
       <div class="row"><label for="labelVisit">Image of fault</label></div>

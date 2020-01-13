@@ -9,19 +9,19 @@ var db = require('./db');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var visitRouter = require('./routes/VisitForm')
-var supportRouter = require('./routes/support')
+var visitRouter = require('./routes/VisitForm');
+var supportRouter = require('./routes/support');
 
 /*
 passport.use(new strategy(
   function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
+    User.findOne({ username= username }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
+        return done(null, false, { message= 'Incorrect username.' });
       }
       if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
+        return done(null, false, { message= 'Incorrect password.' });
       }
       return done(null, user);
     });
@@ -75,6 +75,30 @@ app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', indexRouter);
 
+
+
+// getting the information from visit form 
+app.post('/visitHouse', function (req, res)
+{
+  console.log(req.body);
+
+  res.redirect('/visit');
+
+  var visit = {
+    kitchen: req.body.kitchen,
+    livingRoom: req.body.livingRoom,
+    stairsLanding: req.body.stairsLanding,
+    bathroom: req.body.bathroom,
+    room1: req.body.room1,
+    room2: req.body.room2,
+    room3: req.body.room3,
+    room4: req.body.room4,
+    smokeAlarmFaults: req.body.smokeAlarmFault,
+    electronicFault: req.body.electronics
+    
+  }
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -84,11 +108,21 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err = {} :
 
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
 
+
+
+
+
+
+
 module.exports = app;
+
+
+
+

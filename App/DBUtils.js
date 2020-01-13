@@ -14,15 +14,17 @@ const connection = mysql.createConnection({
     database: 'test'
   });
 
-  connection.connect();
+connection.connect();
 
-  var names = {
+
+
+var names = {
     firstName: document.getElementsByName(),
     lastName: 'LeBouf',
     gender: 'Male'
   };
   
-  var query = connection.query('insert into names set ?', names, function (err, result)
+var query = connection.query('insert into names set ?', names, function (err, result)
   {
     if(err)
     {
