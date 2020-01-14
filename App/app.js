@@ -3,8 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var passport = require('passport')
-var strategy = require('passport-local').Strategy;
+//var passport = require('passport')
+//var strategy = require('passport-local').Strategy;
 var db = require('./db');
 
 const sqlConnection = require('./controllers/DBUtils');
@@ -14,6 +14,7 @@ var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
 var supportRouter = require('./routes/support');
 var logoutRouter = require('./routes/logout');
+var houseVisitRouter = require("./routes/houseVisitSubmit");
 /*
 passport.use(new strategy(
   function(username, password, done) {
@@ -29,7 +30,7 @@ passport.use(new strategy(
     });
   }
 ));
-*/
+
 
 
 passport.use(new strategy(
@@ -52,7 +53,7 @@ passport.deserializeUser(function(id, cb) {
     cb(null, user);
   });
 });
-
+*/
 var app = express();
 
 // view engine setup
@@ -63,8 +64,8 @@ app.use(require('morgan')('combined'));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -77,8 +78,10 @@ app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', logoutRouter);
+app.use('/houseVisit', houseVisitRouter);
 
- //app.post('/getHouse', sqlConnection.getHouse);
+
+// we need this to get data from form
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

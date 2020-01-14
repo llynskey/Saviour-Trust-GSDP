@@ -3,55 +3,67 @@ var express = require('express');
 var visitRouter = require('../routes/VisitForm');
 var router = express.Router();
 
-
-const connection = mysql.createConnection({
+const connectionPool = mysql.createConnection({
+    connectionLimit: 15,
     host: 'localhost',
     user: 'root',
-    password: 'SaviourTrust44',
+    password: '',
     port: 3306,
-    database: 'saviourtrust'
+    database: 'test'
   });
-  
+
+  /*
+   module.exports.getConnection = function(callback) {
+    pool.getConnection(function(err, connection) {
+        callback(err, connection);
+    });
+    
+};
+
+*/
   // function to get an array of house addresses
   module.exports.getHouses = (callback) =>
   {
-      var query = 'SELECT houseNumber, street from House';
-      
-     /* connection.connect()
+    connectionPool.createConnection();
+
+      var query = 'SELECT houseId, houseNumber, street from House';
       
       // creating array and storing house names
-      connection.query(query, function(err, dbRes) {
+      connectionPool.query(query, function(err, dbRes) {
         if (err)
             console.log(err);
         let houseArray = [];
         houseArray = dbRes;
-        */
-        let addressArray =[["1 Boston Street"]];
-       // var select = req.body.houseDropDown;
-        for(let i = 0; i < 2; i++)
+        
+        let addressArray =[];
+        for(let i = 0; i < houseArray.length; i++)
         {
             // getting next address in the array
-            //var address = houseArray[i].houseNumber + " " + houseArray[i].street;
+            var address = houseArray[i].houseNumber + " " + houseArray[i].street;
+
             //alert(address);
-            //addressArray.push(address);
+            addressArray.push(address);
            
         }
         console.log(addressArray);
-   
-     
+       
         //console.log(houseArray);
        // connection.end();
         callback(addressArray);
-   // });
+    });
   };
 
   // getting the information from visit form 
-  function MakeVisit(err, result)
+  module.exports.makeVisit = (req, callback) =>
   {
     console.log(req.body);
   
-    res.redirect('/visit');
-    var visit = {
+    // getting house name
+    var house = req.body
+
+    
+      var visit = {
+      hall: req.body.hall,
       kitchen: req.body.kitchen,
       livingRoom: req.body.livingRoom,
       stairsLanding: req.body.stairsLanding,
@@ -61,14 +73,24 @@ const connection = mysql.createConnection({
       room3Notes: req.body.room3,
       room4Notes: req.body.room4,
       smokeAlarm: req.body.smokeAlarmFault,
-      electronicsNote: req.body.electronics
-      //cmAlarms: req.body.cmAlarms
-      //cmAlarmFault: req.body.cmAlarmFault
-      //smokeAlarmLocation: req.body.smokeAlarmLocation
+      electronicsNote: req.body.electronics,
+      cmAlarms: req.body.cmAlarms,
+      cmAlarmFault: req.body.cmAlarmFault,
+      cmAlarmLocation: req.body.cmAlarmLocation,
+      smokeAlarmLocations: req.body.smokeAlarmLocations
     }
 
-    connection.connect();
-    var query = connection.query('insert into HouseVisit set ?', visit, function (err, result){
+    // splitting the house string to get the house number and street for db query
+
+    console.log(house);
+
+    // getting the id of the current house
+    // var houseIdQuery = connectionPool.query('select houseId from house where houseNumber = @houseNumber and street = @street');
+    
+    //console.log(houseIdQuery);
+
+    //connection.connect();
+    var query = connectionPool.query('insert into housevisit set ?', visit, function (err, result){
       if(err)
       {
         // if there is an error it will be displayed on the console
@@ -77,7 +99,9 @@ const connection = mysql.createConnection({
       }
       console.error(result);
     });
-    connection.end();
-    
+    //connection.end();
+    console.log("written to database!:D");
+    callback();
+
   };
 

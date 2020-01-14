@@ -6,4 +6,4 @@ var select = document.GetElementById('inlineFormCustomSelectPref');
                 var address = houseArray[i].houseNumber + " " + houseArray[i].street;
                 select.add(new Option(address));
             }
-            
+
