@@ -1,29 +1,31 @@
 <%- include partials/header.ejs %>
+
 <head>
 
 </head>
-<body> 
-    <div class="a">
-    <label for="supportpage" >Support Worker Page</label>
-    </div>
-    <div class="row">
+
+<body>
+  <div class="a">
+    <label for="supportpage">Support Worker Page</label>
+  </div>
+  <div class="row">
     <div class="column">
-     <!--<label for="inspectedProperties">inspected properties</label>-->
-     <select class="custom-select" class="selectSupport" size="31">
+      <!--<label for="inspectedProperties">inspected properties</label>-->
+      <select class="custom-select" class="selectSupport" size="31">
         <option selected>Select a property to inspect...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
-     </select>
-    </div> 
-<div class="column">
-    <table style="width:100%">
-        <col width = "20%">
-        <col width = "80%">
+      </select>
+    </div>
+    <div class="column">
+      <table style="width:100%">
+        <col width="20%">
+        <col width="80%">
         <tr>
           <th>room</th>
-          <th>notes</th> 
-          
+          <th>notes</th>
+
         </tr>
         <tr>
           <td>Hallway</td>
@@ -38,124 +40,207 @@
           <td>NA</td>
         </tr>
         <tr>
-            <td>staris</td>
-            <td>NA</td>
+          <td>staris</td>
+          <td>NA</td>
         </tr>
         <tr>
-            <td>Toilet</td>
-            <td>NA</td>
+          <td>Toilet</td>
+          <td>NA</td>
         </tr>
         <tr>
-            <td>Room 1</td>
-            <td>Na</td>
+          <td>Room 1</td>
+          <td>Na</td>
         </tr>
         <tr>
-            <td>Room 2</td>
-            <td>NA</td>
+          <td>Room 2</td>
+          <td>NA</td>
         </tr>
         <tr>
-            <td>Room 3</td>
-            <td>NA</td>
+          <td>Room 3</td>
+          <td>NA</td>
         </tr>
         <tr>
-            <td>Room 4</td>
-            <td>NA</td>
+          <td>Room 4</td>
+          <td>NA</td>
         </tr>
       </table>
       <div class="row">
         <label for="comment">Additional notes</label>
         <textarea class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
       </div>
-     
-</div>
-    
+
+    </div>
+
     <div class="column">
       <div class="row">
-        <label for="comment">Applience Notes</label><!--fill with info from any ectra notes-->
-        <textarea Width ="100%"class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
+        <label for="comment">Applience Notes</label>
+        <!--fill with info from any ectra notes-->
+        <textarea Width="100%" class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
       </div>
       <div class="row">
         <label for="comment">Images of appliences</label>
 
       </div>
-       <div class="row">
-          <div class="column">
-        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
-        </div>
+      <div class="row">
         <div class="column">
-        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
-        </div>
-        <div class="column">
-        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
-        </div>
-        <div class="column">
-        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
-        </div>
-        <div class="column">
-        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
-        </div>
-        <div class="column">
-        <div class="applience"><img src= "images/saviourTrustLogo.png" alt="" id="applience"/></div>
-        </div>
-        <div class="column">
-       <!-- Trigger the Modal -->
-<img id="myImg" src="images/saviourTrustLogo.png" alt="Snow" style="width:100%;max-width:300px">
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+          <div class="row">
+            <div class="column">
+              <img src="images\FridgeFreezer.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+            </div>
+            <div class="column">
+              <img src="images\Frier.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+            </div>
+            <div class="column">
+              <img src="images\kettle.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+            </div>
+            <div class="column">
+              <img src="images\Microwave.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+            </div>
+            <div class="column">
+              <img src="images\Toaster.jpg" onclick="openModal();currentSlide(5)" class="hover-shadow">
+            </div>
+            <div class="column">
+              <img src="images\Vacuum.jpg" onclick="openModal();currentSlide(6)" class="hover-shadow">
+            </div>
+            <div class="column">
+              <img src="images\Washin Machine.jpg" onclick="openModal();currentSlide(7)" class="hover-shadow">
+            </div>
+          </div>
 
-  <!-- The Close Button -->
-  <span class="close">&times;</span>
+          <div id="myModal" class="modal">
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
 
-  <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01">
-</div>
+              <div class="mySlides">
+                <div class="numbertext">1 / 7</div>
+                <img src="images\FridgeFreezer.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">2 / 7</div>
+                <img src="images\Frier.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">3 / 7</div>
+                <img src="images\kettle.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">4 / 7</div>
+                <img src="images\Microwave.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">5 / 7</div>
+                <img src="images\Toaster.PNG" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">6 / 7</div>
+                <img src="images\Vacuum.PNG" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">7 / 7</div>
+                <img src="images\Washin Machine.PNG" style="width:100%">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\FridgeFreezer.jpg" onclick="currentSlide(1)">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\Frier.jpg" onclick="currentSlide(2)">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\kettle.jpg" onclick="currentSlide(3)">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\Toaster.jpg" onclick="currentSlide(4)">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\Vacuum.jpg" onclick="currentSlide(5)">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\Microwave.jpg" onclick="currentSlide(6)">
+              </div>
+
+              <div class="column">
+                <img class="demo" src="images\Washin Machine.PNG" onclick="currentSlide(7)">
+              </div>
+            </div>
+          </div>
         </div>
 
         <table style="width:100%">
-        
-        <tr>
-          <th width = "20%">Alarm</th>
-          <th width = "20%">Working</th>
-          <th width = "60%">faults</th>
-        </tr>
-        <tr>
-          <td>Smoke Alarm</td>
-          <td><input class="form-check-input" type="checkbox"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>CM Alarm</td>
-          <td><input class="form-check-input" type="checkbox"></td>
-          <td></td>
-        </tr>
+
+          <tr>
+            <th width="20%">Alarm</th>
+            <th width="20%">Working</th>
+            <th width="60%">faults</th>
+          </tr>
+          <tr>
+            <td>Smoke Alarm</td>
+            <td><input class="form-check-input" type="checkbox"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>CM Alarm</td>
+            <td><input class="form-check-input" type="checkbox"></td>
+            <td></td>
+          </tr>
         </table>
-    </div>
+      </div>
     </div>
 </body>
 
 <script>
-  // Get the modal
-var modal = document.getElementById("myModal");
+  // Open the Modal
+  function openModal() {
+    document.getElementById("myModal").style.display = "block";
+  }
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
+  // Close the Modal
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+  var slideIndex = 1;
+  showSlides(slideIndex);
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-  
-  </script>
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
 
 <%- include partials/footer.ejs %>
