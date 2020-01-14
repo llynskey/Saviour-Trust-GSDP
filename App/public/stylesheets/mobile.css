@@ -1,63 +1,454 @@
 body {
-    margin: 0;
-    padding: 0;
+	font-family: "Open Sans", helvetica, arial, hevetica, sans-serif;
+	margin: 0;
+	padding: 0;
     background-color: #FEC81E;
+    background-image: ("images/footer.png");
 }
 
-.container {
-    width: 100%;
-    height: 100%;
-    min-width: 320px;
-    margin: auto;
-} 
-
-.row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-}
-  
-.column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-    justify-content: center;
+container {
+	width: 100%;
+	min-width: 320px;
 }
 
-label {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 35px;
-    padding-right: 10px;
-    padding-left: 0px;
+flexContainer {
+	display: flex;
+	justify-content: center;
 }
+div.a{
+    text-align: center;
+  }
 
-input {
-    width: 300px;
-    height: 35px;
-    font-size: 35px;
-    border-radius: 15px;
-    border-color: black;
+flexContainerColumn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
-
-button {
-    width: 300px;
-    height: 50px;
-    font-size: 35px;
-    background-color: #424A9D;
-    border-radius: 15px;
-    border-color: black;
-}
-
 img {
-    width: 100%;
+	width: 100%;
+}
+#footer {
+	width: 100%;
+}
+form {
+	width: 100%;
+}
+.button {
+	background-color: #424A9D;
+    border-radius: 15px;
+    border-color: black;
 }
 .spacer {
     padding: 10px;
 }
+::-webkit-input-placeholder {
+  text-align: center;
+}
+.logoSupport {    
+	flex-basis: 30%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.supportWorkerPage {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+.supportPage {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.propertySelection {
+    display: flex;
+    flex-basis: 10%;
+}
+.tableDetails {
+    display: flex;
+    flex-direction: row;
+    flex-basis:60%
+}
+.appliance {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 10%;
+}
+.imageSelection {
+   display: flex;
+   flex-direction: row;
+   flex-basis:10%;
+   flex-wrap: wrap;
+   width: 100%;
+   
+}
+.smallImages {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.imagesOfAppliance {
+    display: flex;
+    justify-content: center;
+}
+.applianceImg {
+    display: flex;
+    float: left;
+}
 
 
 
+.logo {
+	flex-basis: 40%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 50px;
+}
+.username {
+	flex-basis:20%;
+	display: flex;
+    justify-content: center;
+	flex-direction: column;
+	align-content: center;
+	
+}
+.password {
+	flex-basis: 20%;
+	display: flex;
+    justify-content: center;
+	flex-direction: column;
+	align-content: center;
+}
+.loginButton {
+	flex-basis: 20%;
+	display: flex;
+    justify-content: center;
+}
+
+
+
+.logoVisit {
+	flex-basis: 60%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.propertyList {
+	display: flex;
+	flex-direction: column;
+}
+#propertyListR1 {
+	display: flex;
+	flex-direction: row;
+}
+
+#propertyListR2 {
+    display: flex;
+    flex-direction: row;
+}
+.selectSupport {
+    width: 100%;
+}
+.propertySelect {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 50px;
+}
+.visitForm {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 50px;
+}
+.submit {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 50px;
+}
+.visitFormLbl {
+	display: flex;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
+
+#appliance {
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+    width:100%;
+    max-width:50px;
+}
+.visit-form-control {
+	width: 100%;
+	display: flex;
+	flex-basis: 50%;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
+	width: 100%;
+}
+.tenant {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#t1 {
+	display: flex;
+}
+#t2 {
+	display: flex;
+}
+
+
+#applianceNotesLbl {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+#imagesOfAppliance {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+#toiletSelect {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
+}
+
+#inlineFormCustomSelectPref {
+	width: 100%;
+	display: flex;
+	flex-basis: 50%;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
+}
+#currentUserLvl {
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 15px;
+    padding: 0;
+	margin: 0;
+}
+#supportLbl {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
+
+#propertyLbl {
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
+
+#submitBtn {
+	width: 300px;
+    height: 50px;
+    font-size: 35px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+  /* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 2px;
+    width:100%;
+    max-width:50px;  
+    
+    display: flex;
+    justify-content: center;
+}
+  
+  #myImg:hover {opacity: 0.7;}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  #jobCheck{
+    width: 35px;
+    height: 35px;
+  }
+#logoutBtn {
+	width: 100%;
+    height: 50px;
+    font-size: 35px;
+    border-radius: 15px;
+    border-color: black;
+}
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+
+#usernameLbl {
+	display: flex;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
+
+#usernameTxt {
+	width: 100%;
+	display: flex;
+	flex-basis: 50%;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
+}
+
+#passwordLbl {
+	display: flex;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+}
+
+#passwordTxt {
+	width: 100%;
+	display: flex;
+	flex-basis: 50%;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	font-size: 35px;
+    padding: 0;
+	margin: 0;
+	border-radius: 15px;
+	border-color: black;
+}
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }

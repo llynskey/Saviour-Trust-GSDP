@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+/*const mysql = require('mysql');
 
 let INSERT_NAME_QUERY = 'INSERT INTO names(firstName, lastName) VALUES(Chris,Brewster)';
 const SELECT_ALL_SERVICEUSER_QUERY = 'SELECT lastName FROM names';
@@ -6,23 +6,25 @@ const SELECT_ALL_HOUSES_QUERY = 'SELECT * FROM House';
 const SELECT_ALL_WORKERS_QUERY = 'SELECT * FROM Worker';
 const SELECT_ALL_ROOMS_QUERY = 'SELECT * FROM Room';
 
-const connection = mysql.createConnection({
+const houseConnect = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'SaviourTrust44',
     port: 3306,
-    database: 'test'
+    database: 'House'
   });
 
-  connection.connect();
+connection.connect();
 
-  var names = {
+
+
+var names = {
     firstName: document.getElementsByName(),
     lastName: 'LeBouf',
     gender: 'Male'
   };
   
-  var query = connection.query('insert into names set ?', names, function (err, result)
+var query = connection.query('insert into names set ?', names, function (err, result)
   {
     if(err)
     {
@@ -45,6 +47,4 @@ const connection = mysql.createConnection({
 */
     
 
-  
 
-  
