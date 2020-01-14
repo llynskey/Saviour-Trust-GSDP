@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
   {
       var query = 'SELECT houseNumber, street from House';
       
-      connection.connect()
+     /* connection.connect()
       
       // creating array and storing house names
       connection.query(query, function(err, dbRes) {
@@ -25,24 +25,24 @@ const connection = mysql.createConnection({
             console.log(err);
         let houseArray = [];
         houseArray = dbRes;
-        
-        let addressArray =[];
+        */
+        let addressArray =[["1 Boston Street"]];
        // var select = req.body.houseDropDown;
-        for(let i = 0; i < houseArray.length; i++)
+        for(let i = 0; i < 2; i++)
         {
             // getting next address in the array
-            var address = houseArray[i].houseNumber + " " + houseArray[i].street;
+            //var address = houseArray[i].houseNumber + " " + houseArray[i].street;
             //alert(address);
-            addressArray.push(address);
+            //addressArray.push(address);
            
         }
         console.log(addressArray);
    
      
         //console.log(houseArray);
-        connection.end();
+       // connection.end();
         callback(addressArray);
-    });
+   // });
   };
 
   // getting the information from visit form 
