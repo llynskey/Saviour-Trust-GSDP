@@ -2,7 +2,7 @@
 
 <body>
   <div class="container">
-    <div class="visitorForm" action="/visitHouse" method="post">
+    <div class="visitorForm" action="/houseVisit" method="post">
       <div class="row" id="r1">
         <div class="column" id="c4">
           <div class="logo"><img src="images/saviourTrustLogo.png" alt="" id="logo" /></div>
@@ -17,7 +17,7 @@
           <select class="custom-select Location" name="houseId" id="inlineFormCustomSelectPref">
             <option selected>Which location are you visiting...</option>
              <% for(var a=0; a < houses.length; a++) { %>
-              <option value="<%=houseIds[a]%>" ><%= houses[a] %></option>
+              <option value="<%=houseIds[a]%>"><%= houses[a] %><%= houseIds[a] %></option>
              <% } %>
           </select>
         </div>
@@ -25,7 +25,7 @@
 
       <div class="spacer"></div>
       <div class="row"><label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label></div>
-      <div class="row"><input type="text" name="hallway" class="form-control" id="inputvisits"
+      <div class="row"><input type="text" name="hall" class="form-control" id="inputvisits"
           placeholder="Notes about hallway"></div>
 
       <div class="spacer"></div>

@@ -21,25 +21,29 @@ module.exports.getHouses = (callback => {
   connection.query(query, function(err, dbRes) {
     if (err) console.log(err);
     let houseArray = [];
+
     houseArray = dbRes;
 
+    let houseIds = [];
     let addressArray = [];
 
     //for loop to create address strings and send to array
     for (let i = 0; i < houseArray.length; i++) {
       // getting next address in the array
       var houseId = houseArray[i].houseId;
+      console.log(houseId);
       var address =        
         houseArray[i].houseNumber +
         " " +
         houseArray[i].street;
-       
+      houseIds.push(houseId);
       addressArray.push(address);
+
     }
     console.log(addressArray);
 
     // connection.end();
-    callback(addressArray, houseId);
+    callback(houseIds, addressArray);
   });
 });
 

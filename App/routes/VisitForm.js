@@ -7,20 +7,14 @@ router.get('/',
 //require('connect-ensure-login').ensureLoggedIn(),
 function(req, res) {
 
-  dbUtils.getHouses(function(addressArray, houseId) {
-    var houses = [];
-    var houseIds = [];
-    for(var i = 0; i < addressArray.length; i++)
-    {
-      // pushing each address into array of houses to display to drop down menu
-      houses.push(addressArray);
-      houseIds.push(houseId);
-    }
-    res.render('VisitForm', {houses: houses, houseIds: houseIds });
+  dbUtils.getHouses(function(houseIds, addressArray) {
+    var houses = addressArray;
+    var houseIds = houseIds;
+    
+    res.render('VisitForm', { houseIds: houseIds, houses: houses});
     console.log(JSON.stringify(houses));
   });
   
 });
-
 
 module.exports = router;

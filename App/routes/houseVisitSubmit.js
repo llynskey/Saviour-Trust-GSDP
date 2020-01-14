@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var dbUtils = require('../controllers/DBUtils');
 
-
 router.post('/', function(req, res)
 {
   console.log("calling function!!! :D");
