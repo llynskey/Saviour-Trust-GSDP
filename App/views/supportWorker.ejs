@@ -1,259 +1,272 @@
 <%- include partials/header.ejs %>
-<head>
+ 
+<body>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Support Worker Site</h1>
+        <p>Information from all visits can be found here</p> 
+    </div>
 
-<head>
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+            <div class="col-sm-4">
+                
+                <div class="row">
+                    <div class = "col-sm-12">
+                    <h2>Select A Property to view information about</h2>
+                    <select class="custom-select" class="selectSupport" size="31">
+                        <option value="One"></option>
+                        <option value="Two"></option>
+                        <option value="Three"></option>
+                    </select>
+                    </div>
+                </div>
+            <div class="row">
+                <div class = "col-sm-12">
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th width="20%">Alarm</th m>
+                    <th width="20%">working</th>
+                    <th>Faults</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Smoke Alarm</td>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td>N/A</td>     
+                    </tr>
+                    <tr>
+                    <td>CM Alarm</td>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td>N/A</td>
+                    </tr>  
+                </tbody>
+            </table>  
+                </div>  
+            </div>
 
-</head>
+                
+
+                
+                <hr class="d-sm-none">
+            </div>
+            <div class="col-sm-8">
+                <h2>Notes</h2>
+                <h5>Notes about the rooms and tenants of the selected property.</h5>
+                            
+                <table class="table table-bordered">
+                    <col width = "20%">
+                    <col width = "80%">
+                <thead>
+                    <tr>
+                    <th>Rooms</th>
+                    <th>Notes</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Hallway</td>
+                    <td>N/A</td>
+                    
+                    </tr>
+                    <tr>
+                    <td>Kitchen</td>
+                    <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                    <td>Living Room</td>
+                    <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                        <td>Stairs</td>
+                        <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                        <td>Toilet</td>
+                        <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                        <td>Room 1</td>
+                        <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                        <td>Room 2</td>
+                        <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                        <td>Room 3</td>
+                        <td>N/A</td>
+                
+                    </tr>
+                    <tr>
+                        <td>Room 4</td>
+                        <td>N/A</td>
+                
+                    </tr>
+                </tbody>
+                </table>
+            
+                <br>
+                <h2>Images</h2>
+                <h5>Images of all appliances</h5>
+        
+                <div class="row">
+                    <div class="column">
+                      <img src="images/saviourTrustLogo.png" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                    </div>
+                    <div class="column">
+                      <img src="images/saviourTrustLogo.png" onclick="openModal();currentSlide(2)" class="hover-shadow">
+                    </div>
+                    <div class="column">
+                      <img src="images/saviourTrustLogo.png" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                    </div>
+                    <div class="column">
+                      <img src="images/saviourTrustLogo.png onclick="openModal();currentSlide(4)" class="hover-shadow">
+                    </div>
+                  </div>
+                  
+                  <!-- The Modal/Lightbox -->
+                  <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                  
+                      <div class="mySlides">
+                        <div class="numbertext">1 / 4</div>
+                        <img src="images/saviourTrustLogo.png" style="width:100%">
+                      </div>
+                  
+                      <div class="mySlides">
+                        <div class="numbertext">2 / 4</div>
+                        <img src="images/saviourTrustLogo.png" style="width:100%">
+                      </div>
+                  
+                      <div class="mySlides">
+                        <div class="numbertext">3 / 4</div>
+                        <img src="images/saviourTrustLogo.png" style="width:100%">
+                      </div>
+                  
+                      <div class="mySlides">
+                        <div class="numbertext">4 / 4</div>
+                        <img src="images/saviourTrustLogo.png" style="width:100%">
+                      </div>
+                  
+                      <!-- Next/previous controls -->
+                      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                  
+                      <!-- Caption text -->
+                      <div class="caption-container">
+                        <p id="caption"></p>
+                      </div>
+                  
+                      <!-- Thumbnail image controls -->
+                      <div class="column">
+                        <img class="demo" src="images/saviourTrustLogo.png" onclick="currentSlide(1)" alt="Nature">
+                      </div>
+                  
+                      <div class="column">
+                        <img class="demo" src="images/saviourTrustLogo.png" onclick="currentSlide(2)" alt="Snow">
+                      </div>
+                  
+                      <div class="column">
+                        <img class="demo" src="images/saviourTrustLogo.png" onclick="currentSlide(3)" alt="Mountains">
+                      </div>
+                  
+                      <div class="column">
+                        <img class="demo" src="images/saviourTrustLogo.png" onclick="currentSlide(4)" alt="Lights">
+                      </div>
+                    </div>
+                  </div>
+</body>
+  
+<%- include partials/footer.ejs %>
+
+Put this in support 
+
+
+<%- include partials/header.ejs %>
 
 <body>
-  <div class="a">
-    <label for="supportpage">Support Worker Page</label>
-  </div>
-  <div class="row">
-    <div class="column">
-      <!--<label for="inspectedProperties">inspected properties</label>-->
-      <select class="custom-select" class="selectSupport" size="31">
-        <option selected>Select a property to inspect...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+  
+  <header class='speaker-form-header'>
+    <h1>Create User </h1>
+    <p><em>Create New User For the system</em></p>
+  </header>
+  <fieldset>
+    <div class='row'>
+      <label for='firstName'>Name</label>
     </div>
-    <div class="column">
-      <table style="width:100%">
-        <col width="20%">
-        <col width="80%">
-        <tr>
-          <th>room</th>
-          <th>notes</th>
-
-        </tr>
-        <tr>
-          <td>Hallway</td>
-          <td>na</td>
-        </tr>
-        <tr>
-          <td>Kitchen</td>
-          <td>NA</td>
-        </tr>
-        <tr>
-          <td>Living room</td>
-          <td>NA</td>
-        </tr>
-        <tr>
-          <td>staris</td>
-          <td>NA</td>
-        </tr>
-        <tr>
-          <td>Toilet</td>
-          <td>NA</td>
-        </tr>
-        <tr>
-          <td>Room 1</td>
-          <td>Na</td>
-        </tr>
-        <tr>
-          <td>Room 2</td>
-          <td>NA</td>
-        </tr>
-        <tr>
-          <td>Room 3</td>
-          <td>NA</td>
-        </tr>
-        <tr>
-          <td>Room 4</td>
-          <td>NA</td>
-        </tr>
-      </table>
-      <div class="row">
-        <label for="comment">Additional notes</label>
-        <textarea class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
-      </div>
-</head>
-<body> 
-  <div class="container">
-    <div class="flexContainerColumn">
-      <div class="supportWorkerPage">
-        <div class="logoSupport">
-          <img src="images/SaviourTrustLogo.png" alt=""/>
-        </div>
-        <div class="supportPage">
-          <label for="supportpage" id="supportLbl">Support Worker Page</label>
-        </div>
-      </div>
-
+    <div class="row">
+      <input id="firstName" type="createFirstName" name='FirstName' type='text' />
     </div>
 
-    <div class="column">
+    <fieldset class='legacy-form-row'>
+      <label for='typeOfUser'>type of user</label>
       <div class="row">
-        <label for="comment">Applience Notes</label>
-        <!--fill with info from any ectra notes-->
-        <textarea Width="100%" class="selectSupport" rows="2" id="comment" placeholder="Notes"></textarea>
-      </div>
-      <div class="row">
-        <label for="comment">Images of appliences</label>
-
+        <div class="column">
+          <label for='user-type-1' class='radio-label'>House Visitor</label>
+        </div>
+        <div class="column">
+          <input id='user-type-1' name='user-type' type='radio' value='House Visitor' />
+        </div>
       </div>
       <div class="row">
         <div class="column">
-
-          <div class="row">
-            <div class="column">
-              <img src="images\FridgeFreezer.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
-            </div>
-            <div class="column">
-              <img src="images\Frier.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
-            </div>
-            <div class="column">
-              <img src="images\kettle.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-            </div>
-            <div class="column">
-              <img src="images\Microwave.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
-            </div>
-            <div class="column">
-              <img src="images\Toaster.jpg" onclick="openModal();currentSlide(5)" class="hover-shadow">
-            </div>
-            <div class="column">
-              <img src="images\Vacuum.jpg" onclick="openModal();currentSlide(6)" class="hover-shadow">
-            </div>
-            <div class="column">
-              <img src="images\Washin Machine.jpg" onclick="openModal();currentSlide(7)" class="hover-shadow">
-            </div>
-          </div>
-
-          <div id="myModal" class="modal">
-            <span class="close cursor" onclick="closeModal()">&times;</span>
-            <div class="modal-content">
-
-              <div class="mySlides">
-                <div class="numbertext">1 / 7</div>
-                <img src="images\FridgeFreezer.jpg" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">2 / 7</div>
-                <img src="images\Frier.jpg" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">3 / 7</div>
-                <img src="images\kettle.jpg" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">4 / 7</div>
-                <img src="images\Microwave.jpg" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">5 / 7</div>
-                <img src="images\Toaster.PNG" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">6 / 7</div>
-                <img src="images\Vacuum.PNG" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">7 / 7</div>
-                <img src="images\Washin Machine.PNG" style="width:100%">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\FridgeFreezer.jpg" onclick="currentSlide(1)">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\Frier.jpg" onclick="currentSlide(2)">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\kettle.jpg" onclick="currentSlide(3)">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\Toaster.jpg" onclick="currentSlide(4)">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\Vacuum.jpg" onclick="currentSlide(5)">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\Microwave.jpg" onclick="currentSlide(6)">
-              </div>
-
-              <div class="column">
-                <img class="demo" src="images\Washin Machine.PNG" onclick="currentSlide(7)">
-              </div>
-            </div>
-          </div>
+          <label for='user-type-2' class='radio-label'>Support Worker</label>
         </div>
-
-        <table style="width:100%">
-
-          <tr>
-            <th width="20%">Alarm</th>
-            <th width="20%">Working</th>
-            <th width="60%">faults</th>
-          </tr>
-          <tr>
-            <td>Smoke Alarm</td>
-            <td><input class="form-check-input" type="checkbox"></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>CM Alarm</td>
-            <td><input class="form-check-input" type="checkbox"></td>
-            <td></td>
-          </tr>
-        </table>
+        <div class="column">
+          <input id='user-type-1' name='user-type' type='radio' value='Support Worker' />
+        </div>
       </div>
+      <div class="row">
+        <div class="column">
+          <label for='user-type-3' class='radio-label'>Admin</label>
+
+        </div>
+        <div class="column">
+          <input id='user-type-1' name='user-type' type='radio' value='Support Worker' checked />
+        </div>
+      </div>
+    </fieldset>
+
+    <div class='row'>
+      <label for='password'>Password</label>
+
     </div>
+
+    <div class="row">
+      <input type="password" placeholder="Password" id="password" required>
+      <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+
+    </div>
+    <div>
+      <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+      </fieldset>
+    </div>
+
+  </fieldset>
 </body>
-
 <script>
-  // Open the Modal
-  function openModal() {
-    document.getElementById("myModal").style.display = "block";
-  }
+  var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
 
-  // Close the Modal
-  function closeModal() {
-    document.getElementById("myModal").style.display = "none";
-  }
-
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  // Next/previous controls
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+  function validatePassword() {
+    if (password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-    captionText.innerHTML = dots[slideIndex - 1].alt;
   }
+
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+
 </script>
-
 <%- include partials/footer.ejs %>
