@@ -15,11 +15,11 @@
             <h1 class="labelVisit" id="currentUserLbl">Current User :</h1>
           </div>
           <label class="Location" id="propertyLbl" for="inlineFormCustomSelectLocation">Property</label>
-          <select class="custom-select-location" id="inlineFormCustomSelectPref">
-            <option selected>Which loction are you visiting...</option>
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
+          <select class="custom-select Location" name ="houseDropDown" id="inlineFormCustomSelectPref">
+            <option selected>Which location are you visiting...</option>
+            <% for(var a=0; a < houses.length; a++) { %>
+              <option value=""><%= houses[a] %></option>
+             <% } %>
           </select>
         </div>
       </div>
@@ -59,7 +59,6 @@
             <input class="form-check-input" type="checkbox" id="t2" value="option1">
           </div>
           <input type="text" class="visit-form-control" id="Tenant1Room" placeholder="Notes about Tenant1Room">
-
 
           <div class="spacer"></div>
           <div class="tenant">
@@ -112,13 +111,13 @@
           </div>
           
           
-          <div class="spacer"></div>
+           <div class="spacer"></div>
           <input type="text" class="visit-form-control" id="ExtraNotes" placeholder="Extra Notes if Needed">
         </form>
       </div>
+   
       <div class="submit">
         <button type="submit" class="button" id="submitBtn" value="Submit">Submit</button>
-      </div>
       
     </div>
   </div>
