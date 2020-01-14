@@ -13,7 +13,7 @@ var visitHouseRouter = require('./routes/houseVisitSubmit');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
-var supportRouter = require('./routes/support');
+//var supportRouter = require('./routes/support');
 var logoutRouter = require('./routes/logout');
 /*
 passport.use(new strategy(
@@ -32,7 +32,7 @@ passport.use(new strategy(
 ));
 */
 var visitRouter = require('./routes/VisitForm')
-var supportRouter = require('./routes/support')
+//var supportRouter = require('./routes/support')
 var createUserRouter = require('./routes/createUser')
 var AdminPageRouter = require('./routes/AdminPage')
 var createPropertyRouter = require('./routes/createProperty')
@@ -80,7 +80,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
-app.use('/support', supportRouter);
+//app.use('/support', supportRouter);
 app.use('/logout', logoutRouter);
 app.use('/houseVisit', visitHouseRouter);
  //app.post('/getHouse', sqlConnection.getHouse);
@@ -105,12 +105,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
-
-
-
 
 module.exports = app;
 

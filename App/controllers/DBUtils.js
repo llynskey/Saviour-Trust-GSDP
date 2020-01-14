@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     database: 'test'
   });
   
-  module.exports.getHouse = (err, result) =>
+  module.exports.getHouses = (callback) =>
   {
       var query = 'SELECT houseId, houseNumber, street from House';
       
