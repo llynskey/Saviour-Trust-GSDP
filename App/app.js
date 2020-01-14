@@ -30,6 +30,11 @@ passport.use(new strategy(
   }
 ));
 */
+var visitRouter = require('./routes/VisitForm')
+var supportRouter = require('./routes/support')
+var createUserRouter = require('./routes/createUser')
+var AdminPageRouter = require('./routes/AdminPage')
+var createPropertyRouter = require('./routes/createProperty')
 
 
 passport.use(new strategy(
@@ -54,7 +59,6 @@ passport.deserializeUser(function(id, cb) {
 });
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -77,6 +81,10 @@ app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', logoutRouter);
+app.use('/support', supportRouter);
+app.use('/createUser', createUserRouter);
+app.use('/AdminPage', AdminPageRouter);
+app.use('/createProperty', createPropertyRouter);
 
  app.post('/getHouse', sqlConnection.getHouse);
 

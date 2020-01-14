@@ -1,0 +1,78 @@
+<%- include partials/header.ejs %>
+
+<body>
+  
+  <header class='speaker-form-header'>
+    <h1>Create User </h1>
+    <p><em>Create New User For the system</em></p>
+  </header>
+  <fieldset>
+    <div class='row'>
+      <label for='firstName'>Name</label>
+    </div>
+    <div class="row">
+      <input id="firstName" type="createFirstName" name='FirstName' type='text' />
+    </div>
+
+    <fieldset class='legacy-form-row'>
+      <label for='typeOfUser'>type of user</label>
+      <div class="row">
+        <div class="column">
+          <label for='user-type-1' class='radio-label'>House Visitor</label>
+        </div>
+        <div class="column">
+          <input id='user-type-1' name='user-type' type='radio' value='House Visitor' />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for='user-type-2' class='radio-label'>Support Worker</label>
+        </div>
+        <div class="column">
+          <input id='user-type-1' name='user-type' type='radio' value='Support Worker' />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for='user-type-3' class='radio-label'>Admin</label>
+
+        </div>
+        <div class="column">
+          <input id='user-type-1' name='user-type' type='radio' value='Support Worker' checked />
+        </div>
+      </div>
+    </fieldset>
+
+    <div class='row'>
+      <label for='password'>Password</label>
+
+    </div>
+
+    <div class="row">
+      <input type="password" placeholder="Password" id="password" required>
+      <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+
+    </div>
+    <div>
+      <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+      </fieldset>
+    </div>
+
+  </fieldset>
+</body>
+<script>
+  var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+
+  function validatePassword() {
+    if (password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+
+</script>
+<%- include partials/footer.ejs %>
