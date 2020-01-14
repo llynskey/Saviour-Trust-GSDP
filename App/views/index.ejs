@@ -1,39 +1,26 @@
 <%- include partials/header.ejs%>
 <body>
   <div class="container">
-    <div class="row">
+    <div class="flexContainer">
+      <div class="logo">
+        <img src="images/SaviourTrustLogo.png" alt=""/>
+      </div>
+      <div class="username">
+        <label for = "Usename" id="usernameLbl">Username</label>
+        <div id="usernameTxt"><input type="text" class="form-control" name="username" id="usernameTxt" placeholder="Enter Username"></div>
+      </div>			
       <div class="spacer"></div>
-      <div class="column">
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="logo"><img src= "images/saviourTrustLogo.png" alt=""/></div>
+      <div class="password">
+        <label for="Passowrd" id="passwordLbl">Password</label>
+        <div id="usernameTxt"><input type="password" class="form-control" name="password" id="passwordTxt" placeholder="Enter Password"> </div>
       </div>
       <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="loginButton">
+        <button type="submit" class="button" id="submitBtn">LogIn</button>
+      </div>
     </div>
-
-    <div class="spacer"></div>
-    <div class="spacer"></div>
-
-    <form action="/login" method="POST">
-        <div class="row">
-            <label for = "Usename">Username</label> 
-            <input type="text" class="form-control" name="username" placeholder="   Enter Username">
-        </div>
-      </div>
-      <div class="spacer"></div>
-      <div class="row">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="   Enter Password">                 
-      </div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        
-        <div class="row">
-          <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-        </div>
-      </form> 
-
-      
-
+  </div>
 </body>
+
 <%- include partials/footer.ejs %>
