@@ -9,6 +9,7 @@ var db = require('./db');
 
 const sqlConnection = require('./controllers/DBUtils');
 
+var visitHouseRouter = require('./routes/houseVisitSubmit');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
@@ -81,12 +82,8 @@ app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
 app.use('/support', supportRouter);
 app.use('/logout', logoutRouter);
-app.use('/support', supportRouter);
-app.use('/createUser', createUserRouter);
-app.use('/AdminPage', AdminPageRouter);
-app.use('/createProperty', createPropertyRouter);
-
- app.post('/getHouse', sqlConnection.getHouse);
+app.use('/houseVisit', visitHouseRouter);
+ //app.post('/getHouse', sqlConnection.getHouse);
 
 
 
