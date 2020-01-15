@@ -3,7 +3,7 @@ var express = require("express");
 
 var router = express.Router();
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "",
@@ -11,41 +11,37 @@ const connection = mysql.createConnection({
   database: "test"
 });
 
-module.exports.getHouses = (callback => {
+module.exports.getHouses = callback => {
   //sql query command
   var query = "SELECT houseId, houseNumber, street from house";
 
-  connection.connect();
+  connection.getConnection(function(err, connection) {
+    // creating array and storing house names
+    connection.query(query, function(err, dbRes) {
+      if (err) console.log(err);
+      let houseArray = [];
 
-  // creating array and storing house names
-  connection.query(query, function(err, dbRes) {
-    if (err) console.log(err);
-    let houseArray = [];
+      houseArray = dbRes;
 
-    houseArray = dbRes;
+      let houseIds = [];
+      let addressArray = [];
 
-    let houseIds = [];
-    let addressArray = [];
+      //for loop to create address strings and send to array
+      for (let i = 0; i < houseArray.length; i++) {
+        // getting next address in the array
+        var houseId = houseArray[i].houseId;
+        console.log(houseId);
+        var address = houseArray[i].houseNumber + " " + houseArray[i].street;
+        houseIds.push(houseId);
+        addressArray.push(address);
+      }
+      console.log(addressArray);
 
-    //for loop to create address strings and send to array
-    for (let i = 0; i < houseArray.length; i++) {
-      // getting next address in the array
-      var houseId = houseArray[i].houseId;
-      console.log(houseId);
-      var address =        
-        houseArray[i].houseNumber +
-        " " +
-        houseArray[i].street;
-      houseIds.push(houseId);
-      addressArray.push(address);
-
-    }
-    console.log(addressArray);
-
-    // connection.end();
-    callback(houseIds, addressArray);
+      // connection.end();
+      callback(houseIds, addressArray);
+    });
   });
-});
+};
 
 // getting the information from visit form
 // getting the information from visit form
@@ -84,18 +80,21 @@ module.exports.makeVisit = (req, callback) => {
   //console.log(houseIdQuery);
 
   //connection.connect();
-  var query = connection.query("insert into housevisit set ?", visit, function(
-    err,
-    result
-  ) {
-    if (err) {
-      // if there is an error it will be displayed on the console
-      console.error(err);
-      return;
-    }
-    console.error(result);
+  connection.getConnection(function(err, connection) {
+    var query = connection.query(
+      "insert into housevisit set ?",
+      visit,
+      function(err, result) {
+        if (err) {
+          // if there is an error it will be displayed on the console
+          console.error(err);
+          return;
+        }
+        console.error(result);
+      }
+    );
+    //connection.end();
+    console.log("written to database!:D");
+    callback();
   });
-  //connection.end();
-  console.log("written to database!:D");
-  callback();
 };
