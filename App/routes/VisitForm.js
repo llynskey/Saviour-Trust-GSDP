@@ -5,7 +5,7 @@ var dbUtils = require('../controllers/DBUtils');
 /* GET home page. */
 router.get('/',
 
-//ensuring user is
+//ensuring user is logged in
 require('connect-ensure-login').ensureLoggedIn(),
 function(req, res) {
 

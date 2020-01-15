@@ -203,6 +203,7 @@ Put this in support
     }
   }*/
 
+  // form to fill in the visit 
   function fillForm() {
     var selected = document.getElementsByClassName("selectSupport")[0].selectedIndex+1;
     $.post('/loadVisit', {houseId: selected}, function(data, status){
@@ -218,7 +219,6 @@ Put this in support
     document.getElementById("room3").innerHTML = data.room3;
     document.getElementById("room4").innerHTML = data.room4;
     
-
   });
 
 
