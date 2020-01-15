@@ -95,12 +95,12 @@ module.exports.createWorker = (req, callback) => {
 console.log(req.body);
 
 var worker = {
-  workerId = req.body.workerId,
-  //userId = req.body.workerId;
-  firstName = req.body.firstName,
-  lastName = req.body.lastName,
-  dob = req.body.dob,
-  gender = req.body.gender
+  workerId: req.body.workerId,
+  userId: req.body.workerId,
+  firstName: req.body.firstName,
+  lastName: req.body.lastName,
+  dob: req.body.dob,
+  gender: req.body.gender
 };
 connection.getConnection(function(err, connection) {
   var query = connection.query(
@@ -124,16 +124,14 @@ module.exports.createHouse = (req, callback) => {
 console.log(req.body);
 
 var house = {
-  houseId = req.body.houseId,
-  houseNumber = req.body.houseNumber,
-  street = req.body.street,
-  city = req.body.city,
-  counter = req.body.county,
-  postcode = req.body.postcode
+  houseId: req.body.houseId,
+  houseNumber: req.body.houseNumber,
+  street: req.body.street,
+  city: req.body.city,
+  counter: req.body.county,
+  postcode: req.body.postcode
 
   //room1 = req.body.room1Id
-
-
 };
 connection.getConnection(function(err, connection) {
   var query = connection.query(
