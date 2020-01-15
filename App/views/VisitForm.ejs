@@ -7,15 +7,18 @@
         <div class="column" id="c4">
           <div class="logo"><img src="images/saviourTrustLogo.png" alt="" id="logo" /></div>
         </div>
+
         <div class="column" id="c5">
           <button type="button" class="LogOutBtn" onclick="location.href='/logout';">LogOut</button>
-          <h1 class="labelVisit">You are logged in as: <%=//user.displayName%></h1>
+          <h1 class="labelVisit">You are logged in as: <%=user.displayName%></h1>
+
+          <form action="/houseVisit" method="POST">
           <label class="Location" for="inlineFormCustomSelectLocation">Property</label>
           <select class="custom-select Location" name="houseId" id="inlineFormCustomSelectPref">
             <option selected>Which location are you visiting...</option>
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
+             <% for(var a=0; a < houses.length; a++) { %>
+              <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
+             <% } %>
           </select>
         </div>
       </div>

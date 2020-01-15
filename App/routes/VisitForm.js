@@ -4,15 +4,17 @@ var dbUtils = require('../controllers/DBUtils');
 
 /* GET home page. */
 router.get('/', 
-//require('connect-ensure-login').ensureLoggedIn(),
-function(req, res, next) {
+require('connect-ensure-login').ensureLoggedIn(),
+function(req, res) {
 
-  var houses = dbUtils.getHouse();
+  dbUtils.getHouses(function(houseIds, addressArray) {
+    var houses = addressArray;
+    var houseIds = houseIds;
+    
+    res.render('VisitForm', {user: req.user, houseIds: houseIds, houses: houses});
+    console.log(JSON.stringify(houses));
+  });
   
-
-  console.log('visit');
-  res.render('VisitForm', {user: req.user, houses: houses });
 });
-
 
 module.exports = router;
