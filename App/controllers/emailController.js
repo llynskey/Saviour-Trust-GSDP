@@ -16,9 +16,11 @@ var transporter = nodemailer.createTransport({
     text: 'That was easy! Is what you will say after meeting hot singles in the area'
   };
   
+  // function to send email to worker
   module.exports.sendEmail = (req, callback) =>{
 
     // variable storing confirmation of email sending
+    
     var emailConfirmation;
     transporter.sendMail(mailOptions, function(error, info){
     if (error) {
