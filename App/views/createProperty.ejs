@@ -8,35 +8,66 @@
     <p><em>add a new property to the system, and add/change tennants</em></p>
   </header>
 
+
 <fieldset>
-  <div class='row'>
-    <label for='Property'>Property adress</label>
-  </div>
-  <div class="row">
-    <input id="propertyAdress" type="createPropertyAdress" name='propertyAdress' type='text' />
-  </div>
-
-  <div class='row'>
-    <label for='noOfRooms'>Number of rooms</label>
-  </div>
-
-  <div class="row">
-    <input type="number" id="noOfRooms">
-  </div>
-
-  <article>
-    <label for="files">upload images of all appliances: </label>
-    <input id="files" type="file" multiple />
-    <div>
-      <output id="result">
+  <form>
+    
+    <div class="form-group">
+      <label for="houseNuber">House Number</label>
+      <input type="number" name = "houseNumber" class="form-control" id="houseNumber" placeholder="House Number">
     </div>
-  </article>
-
-  <div>
-    <button type="submit" class="pure-button pure-button-primary">Submit</button>
-  </div>
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input type="text" class="form-control" name = "street" id="street" placeholder="Street Name">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="city">City</label>
+        <select id="city" name ="city" class="form-control">
+          <option selected>Choose...</option>
+          <option>Leeds</option>
+          <option>Pontefract</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="county">County</label>
+        <select id="county" name ="county" class="form-control">
+          <option selected>Choose...</option>
+          <option>North Yorkshire</option>
+          <option>East Yorkshire</option>
+          <option>South Yorkshire</option>
+          <option>West Yorkshire</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="postcode">Postcode</label>
+        <input type="text" name = "postcode" class="form-control" id="postcode">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="numOfRooms">Number of rooms</label>
+      <select id="numOfRooms" name ="numOfRooms" class="form-control">
+        <option selected>Choose...</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <article>
+      <label for="files">upload images of all appliances: </label>
+      <input id="files" type="file" multiple />
+      <div>
+        <output id="result">
+      </div>
+    </article>
+  
+    <div>
+      <button type="submit" class="pure-button pure-button-primary">Create</button>
+    </div>
+  </form>
 </fieldset>
-
 </body>
 
 <script>

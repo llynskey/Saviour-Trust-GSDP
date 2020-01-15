@@ -9,12 +9,16 @@ var db = require('./db');
 
 const sqlConnection = require('./controllers/DBUtils');
 
-var visitHouseRouter = require('./routes/houseVisitSubmit');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
 var supportRouter = require('./routes/supportWorker');
 var logoutRouter = require('./routes/logout');
+var createUserRouter = require('./routes/createUser')
+var createPropertyRouter = require('./routes/createProperty')
+var AdminPageRouter = require('./routes/AdminPage')
+
 /*
 passport.use(new strategy(
   function(username, password, done) {
@@ -30,12 +34,13 @@ passport.use(new strategy(
     });
   }
 ));
-*/
+
 var visitRouter = require('./routes/VisitForm')
 var supportRouter = require('./routes/supportWorker')
 var createUserRouter = require('./routes/createUser')
 var AdminPageRouter = require('./routes/AdminPage')
 var createPropertyRouter = require('./routes/createProperty')
+var cre*/
 
 
 passport.use(new strategy(
@@ -68,8 +73,8 @@ app.use(require('morgan')('combined'));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -82,8 +87,10 @@ app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
 app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
-app.use('/houseVisit', visitHouseRouter);
 app.use('/login', indexRouter)
+app.use('/createUser',createUserRouter)
+app.use('/createProperty',createPropertyRouter)
+app.use('/adminPage', AdminPageRouter)
 
 
 // catch 404 and forward to error handler
