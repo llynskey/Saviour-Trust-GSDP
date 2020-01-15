@@ -83,7 +83,7 @@ app.use('/visit', visitRouter);
 app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
 app.use('/houseVisit', visitHouseRouter);
-//app.post('/getHouse', sqlConnection.getHouse);
+app.use('/login', indexRouter)
 
 
 // catch 404 and forward to error handler
