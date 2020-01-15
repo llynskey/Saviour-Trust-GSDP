@@ -48,9 +48,8 @@ module.exports.getHouses = callback => {
 module.exports.makeVisit = (req, callback) => {
   console.log(req.body);
 
-  // getting house name
-  var house = req.body;
 
+  // creating a visit variable that contains all data fields
   var visit = {
     
     houseId: req.body.houseId,
@@ -71,16 +70,7 @@ module.exports.makeVisit = (req, callback) => {
     smokeAlarmLocations: req.body.smokeAlarmLocations
   };
 
-  // splitting the house string to get the house number and street for db query
 
-  console.log(house);
-
-  // getting the id of the current house
-  // var houseIdQuery = connectionPool.query('select houseId from house where houseNumber = @houseNumber and street = @street');
-
-  //console.log(houseIdQuery);
-
-  //connection.connect();
   connection.getConnection(function(err, connection) {
     var query = connection.query(
       "insert into housevisit set ?",
@@ -94,8 +84,72 @@ module.exports.makeVisit = (req, callback) => {
         console.error(result);
       }
     );
-    //connection.end();
     console.log("written to database!:D");
     callback();
   });
+};
+
+
+// function for getting worker details from form and writing to database
+module.exports.createWorker = (req, callback) => {
+console.log(req.body);
+
+var worker = {
+  workerId = req.body.workerId,
+  //userId = req.body.workerId;
+  firstName = req.body.firstName,
+  lastName = req.body.lastName,
+  dob = req.body.dob,
+  gender = req.body.gender
+};
+connection.getConnection(function(err, connection) {
+  var query = connection.query(
+    "insert into worker set ?",
+    worker,
+    function(err, result) {
+      if (err) {
+        // if there is an error it will be displayed on the console
+        console.error(err);
+        return;
+      }
+      console.error(result);
+    });
+  console.log("written to database!:D");
+  callback();
+
+});
+};
+
+module.exports.createHouse = (req, callback) => {
+console.log(req.body);
+
+var house = {
+  houseId = req.body.houseId,
+  houseNumber = req.body.houseNumber,
+  street = req.body.street,
+  city = req.body.city,
+  counter = req.body.county,
+  postcode = req.body.postcode
+
+  //room1 = req.body.room1Id
+};
+connection.getConnection(function(err, connection) {
+  var query = connection.query(
+    "insert into house set ?",
+    house,
+    function(err, result) {
+      if (err) {
+        // if there is an error it will be displayed on the console
+        console.error(err);
+        return;
+      }
+      console.error(result);
+    });
+  console.log("written to database!:D");
+  callback();
+
+});
+
+
+
 };
