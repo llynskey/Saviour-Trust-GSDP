@@ -19,6 +19,7 @@ var createUserRouter = require('./routes/createUser');
 var AdminPageRouter = require('./routes/AdminPage');
 var createPropertyRouter = require('./routes/createProperty');
 var loadVisitRouter = require('./routes/loadVisit');
+var visitHouseRouter = require('./routes/houseVisitSubmit');
 //var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 
@@ -52,8 +53,8 @@ app.use(require('morgan')('combined'));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
