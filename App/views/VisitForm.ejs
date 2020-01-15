@@ -17,7 +17,7 @@
           <select class="custom-select Location" name="houseId" id="inlineFormCustomSelectPref">
             <option selected>Which location are you visiting...</option>
              <% for(var a=0; a < houses.length; a++) { %>
-              <option value="<%=houseIds[a]%>"><%= houses[a] %><%= houseIds[a] %></option>
+              <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
              <% } %>
           </select>
         </div>
@@ -117,7 +117,7 @@
           </div>
         </div>
         <div class="col-6">
-          <div><input type="text" name="" class="form-control" id="Alarm1Faluts" placeholder="Fault notes" ></div>
+          <div><input type="text" name="smokeAlarmFault" class="form-control" id="Alarm1Faluts" placeholder="Fault notes" ></div>
         </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
       
       <div class="row">
         <div class="col-4">
-          <div class="row"><label for="Room4" class="labelVisit">Smoke alarms Present?</label></div>
+          <div class="row"><label for="Room4" class="labelVisit">CM alarms Present?</label></div>
         </div>
         <div class="col-2">
           <div class="custom-control custom-checkbox">
@@ -136,7 +136,7 @@
           </div>
         </div>
         <div class="col-6">
-          <div><input type="text" name="" class="form-control" id="Alarm1Faluts" placeholder="Fault notes" ></div>
+          <div><input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes" ></div>
         </div>
 
         </div>

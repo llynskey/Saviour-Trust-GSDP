@@ -52,6 +52,7 @@ module.exports.makeVisit = (req, callback) => {
   var house = req.body;
 
   var visit = {
+    
     houseId: req.body.houseId,
     hall: req.body.hall,
     kitchen: req.body.kitchen,
@@ -62,10 +63,10 @@ module.exports.makeVisit = (req, callback) => {
     room2Notes: req.body.room2Notes,
     room3Notes: req.body.room3Notes,
     room4Notes: req.body.room4Notes,
-    smokeAlarm: req.body.smokeAlarm,
     electronicsNote: req.body.electronicsNote,
-    cmAlarms: req.body.cmAlarms,
-    cmAlarmFault: req.body.cmAlarmFault,
+    smokeAlarm: req.body.smokeAlarmFault,
+    cmAlarms: req.body.cmAlarmFault,
+    //cmAlarmFault: req.body.cmAlarmFault,
     cmAlarmLocation: req.body.cmAlarmLocation,
     smokeAlarmLocations: req.body.smokeAlarmLocations
   };
