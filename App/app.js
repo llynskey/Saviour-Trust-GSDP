@@ -15,27 +15,10 @@ var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
 var supportRouter = require('./routes/supportWorker');
 var logoutRouter = require('./routes/logout');
-/*
-passport.use(new strategy(
-  function(username, password, done) {
-    User.findOne({ username= username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message= 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message= 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-*/
-var visitRouter = require('./routes/VisitForm')
-var supportRouter = require('./routes/supportWorker')
-var createUserRouter = require('./routes/createUser')
-var AdminPageRouter = require('./routes/AdminPage')
-var createPropertyRouter = require('./routes/createProperty')
+var createUserRouter = require('./routes/createUser');
+var AdminPageRouter = require('./routes/AdminPage');
+var createPropertyRouter = require('./routes/createProperty');
+
 
 
 passport.use(new strategy(
@@ -84,6 +67,9 @@ app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
 app.use('/houseVisit', visitHouseRouter);
 app.use('/login', indexRouter)
+app.use('/createHouse', createPropertyRouter);
+app.use('/createUser', createUserRouter);
+app.use('/adminPage', AdminPageRouter);
 
 
 // catch 404 and forward to error handler

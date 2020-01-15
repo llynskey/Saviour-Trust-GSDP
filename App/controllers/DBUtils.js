@@ -44,10 +44,8 @@ module.exports.getHouses = callback => {
 };
 
 // getting the information from visit form
-// getting the information from visit form
 module.exports.makeVisit = (req, callback) => {
   console.log(req.body);
-
 
   // creating a visit variable that contains all data fields
   var visit = {
@@ -69,7 +67,6 @@ module.exports.makeVisit = (req, callback) => {
     cmAlarmLocation: req.body.cmAlarmLocation,
     smokeAlarmLocations: req.body.smokeAlarmLocations
   };
-
 
   connection.getConnection(function(err, connection) {
     var query = connection.query(
