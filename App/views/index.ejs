@@ -1,19 +1,78 @@
 <%- include partials/header.ejs %>
 
-<body>
  <!-- <h1><%= title %></h1>
   <p>Welcome to <%= title %></p> -->
-  <form>
-    <div class="form-group">
-      <label for = "Usename">Username</label> 
-      <input type="text" class="form-control" name="username" placeholder="Enter Username">
+  <body>
+  
+    <header class='speaker-form-header'>
+      <div class="row">
+        <div class="col-md-7">
+          <img src="images/SaviourTrustLogo.png" style="width: 100%;" alt=""/>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <h1>HomePage | Logon </h1>
+          </div>
+          <div class="row">
+            <p><em>Welcome To The Saviour Trust</em></p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <fieldset>
+      <form action="/login" method="POST">
+          <div class="form-row">
+            <div class="col-md-12">
+              <label for = "Usename" id="usernameLbl">Username</label>
+                <input type="text" class="form-control" id="usernameTxt" name="username" placeholder="Enter Username">
+            </div>
+          </div>
+    
+          <div class="form-row">
+            <div class="col-md-12">
+              <label for="Passowrd" id="passwordLbl">Password</label>
+              <input type="password" class="form-control" id="passwordTxt" name="password" placeholder="Enter Password">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12">
+              <button type="submit" class="button" id="submitBtn">LogIn</button>
+            </div>
+          </div>
+      </form>
+    </fieldset>
+  </body>
+
+
+<!-- 
+
+
+<body id="body">
+  <div class="container">
+    <div class="flexContainer">
+      <div class="logo">
+        <img src="images/SaviourTrustLogo.png" alt=""/>
+      </div>
+      <form action="/login" method="POST">
+      <div class="username">
+        <label for = "Usename" id="usernameLbl">Username</label>
+        <div id="usernameTxt"><input type="text" class="form-control" id="usernameTxt" name="username" placeholder="Enter Username"></div>
+      </div>			
+      <div class="spacer"></div>
+      <div class="password">
+        <label for="Passowrd" id="passwordLbl">Password</label>
+        <div id="usernameTxt"><input type="password" class="form-control" id="passwordTxt" name="password" placeholder="Enter Password"> </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="loginButton">
+        <button type="submit" class="button" id="submitBtn">LogIn</button>
+      </div>
+    </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
-</form>
-</body>
+
+</body> -->
 
 <%- include partials/footer.ejs %>

@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Saviour Trust' });
+router.get('/', function (req, res, next) {
+  res.render('index', {title: 'saviour'});
 });
 
 
