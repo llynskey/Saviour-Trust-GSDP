@@ -132,6 +132,8 @@ var house = {
   postcode = req.body.postcode
 
   //room1 = req.body.room1Id
+
+
 };
 connection.getConnection(function(err, connection) {
   var query = connection.query(
@@ -149,7 +151,21 @@ connection.getConnection(function(err, connection) {
   callback();
 
 });
+};
 
+module.exports.getWorker = callback => {
+  console.log(req.body);
 
+  var query = "SELECT * FROM worker ORDER BY workerId";
 
+  connection.getConnection(function(err, connection) {
+  // running query to add workers from db to array of workers 
+  connection.query(query, function(err, dbRes) {
+    let workerArray = [];
+    workerArray = dbRes;
+
+    console.log(workerArray);
+  });
+    callback(workerArray);
+  });
 };
