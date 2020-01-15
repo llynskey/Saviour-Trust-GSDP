@@ -14,7 +14,7 @@
 
           <form action="/houseVisit" method="POST">
           <label class="Location" for="inlineFormCustomSelectLocation">Property</label>
-          <select class="custom-select Location" name="houseId" id="inlineFormCustomSelectPref">
+          <select class="custom-select Location selectedAddress" name="houseId" id="inlineFormCustomSelectPref" onChange="getHouseAddress(this);">
             <option selected>Which location are you visiting...</option>
              <% for(var a=0; a < houses.length; a++) { %>
               <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
@@ -136,7 +136,8 @@
           </div>
         </div>
         <div class="col-6">
-          <div><input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes" ></div>
+          <div>
+            <input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes" ></div>
         </div>
 
         </div>
@@ -157,18 +158,47 @@
       
       
       <div class="spacer"></div>
-      <input type="text" class="visit-form-control" id="ExtraNotes" placeholder="Extra Notes if Needed">
+     
+
   </div>
  
 
   <div class="spacer"></div>
   <button type="submit" name="submitBtn">Submit</button>
-  </div>
 </form>
-     
+
+<input type="text" class="visit-form-control" name="emailText" id="emailText" placeholder="Write request to worker...">
+<button type="submit" class="emailButton" id="emailBtn" onclick="sendEmail()">Send Worker Request</button>
+<div class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input emailCheckbox" id="emailCheck">
+  <label class="custom-control-label" for="emailCheck"></label>
+</div>
 
 </body>
 
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+var houses = document.getElementsByName("houseId");
+var emailText;
+
+var houseAddress;
+function sendEmail() {
+  emailText = document.getElementById("emailText").value;
+  console.log("success");
+    //var houseaddress = getHouseAddress(houses);
+    alert(houseAddress);
+    $.post('/emailRouter', {houseaddress: houseAddress, email: emailText}, function(data, status)
+    {
+      alert("Email Sent!");
+    });
+
+  }
+  function getHouseAddress(houses) {
+    houseAddress = houses.options[houses.selectedIndex].text;
+    alert(houseAddress);
+}
+</script>
 
 
 <%- include partials/footer.ejs %>

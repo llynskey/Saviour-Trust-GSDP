@@ -186,10 +186,7 @@
                     </div>
                   </div>
 </body>
-  
-<%- include partials/footer.ejs %>
 
-Put this in support 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -206,6 +203,7 @@ Put this in support
   // form to fill in the visit 
   function fillForm() {
     var selected = document.getElementsByClassName("selectSupport")[0].selectedIndex+1;
+    
     $.post('/loadVisit', {houseId: selected}, function(data, status){
     console.log(data);
     

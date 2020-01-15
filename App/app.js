@@ -19,6 +19,7 @@ var createUserRouter = require('./routes/createUser');
 var AdminPageRouter = require('./routes/AdminPage');
 var createPropertyRouter = require('./routes/createProperty');
 var loadVisitRouter = require('./routes/loadVisit');
+var emailRouter = require("./routes/emailRouter");
 //var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 
@@ -73,6 +74,7 @@ app.use('/createUser', createUserRouter);
 app.use('/adminPage', AdminPageRouter);
 
 app.use('/loadVisit', loadVisitRouter);
+app.use('/emailRouter', emailRouter);
 //app.use('/viewSelectedVisit', selectHouseVisitRouter);
 
 // catch 404 and forward to error handler
