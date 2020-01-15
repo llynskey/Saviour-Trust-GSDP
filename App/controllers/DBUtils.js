@@ -151,8 +151,10 @@ connection.getConnection(function(err, connection) {
 module.exports.getWorker = callback => {
   console.log(req.body);
 
-  var query = "SELECT * FROM worker ORDER BY workerId";
+  
 
+  var query = "SELECT * FROM worker ORDER BY workerId";
+  
   connection.getConnection(function(err, connection) {
   // running query to add workers from db to array of workers 
   connection.query(query, function(err, dbRes) {
@@ -163,4 +165,45 @@ module.exports.getWorker = callback => {
   });
     callback(workerArray);
   });
+};
+
+
+module.exports.getLatestHouseVisit = (req, callback)=> {
+// getting houseId
+var houseId = req.body.houseId;
+console.dir(req.body);
+console.log("houseId");
+
+// using filter to search by houseId variable
+filter  = [houseId];
+// quer to get an array of with all the latest visit details found by appropriate houseId
+var query = "SELECT * FROM housevisit where houseId = ? ORDER BY visitId DESC LIMIT 0, 1";
+connection.getConnection(function(err, connection) {
+  // creating array and storing house names
+  connection.query(query, filter, function(err, dbRes) {
+    if (err) console.log(err);
+    let visitArray = [];
+    
+    visitArray = dbRes;
+    var hallNotes = visitArray[0].hall;
+    var kitchenNotes = visitArray[0].kitchen;
+    var livingRoomNotes = visitArray[0].livingRoom;
+    var stairsNotes = visitArray[0].stairsLanding;
+    var bathroomNotes = visitArray[0].bathroom;
+    var room1Notes = visitArray[0].room1Notes;
+    var room2Notes = visitArray[0].room2Notes;
+    var room3Notes = visitArray[0].room3Notes;
+    var room4Notes = visitArray[0].room4Notes;
+    
+     //for loop to create address strings and send to array
+
+
+    
+    console.log(visitArray);
+    
+    // connection.end();
+    callback(hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes,room1Notes,room2Notes,room3Notes,room4Notes);
+ 
+  });
+});
 };

@@ -18,7 +18,8 @@ var logoutRouter = require('./routes/logout');
 var createUserRouter = require('./routes/createUser');
 var AdminPageRouter = require('./routes/AdminPage');
 var createPropertyRouter = require('./routes/createProperty');
-
+var loadVisitRouter = require('./routes/loadVisit');
+//var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 
 passport.use(new strategy(
@@ -66,11 +67,13 @@ app.use('/visit', visitRouter);
 app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
 app.use('/houseVisit', visitHouseRouter);
-app.use('/login', indexRouter)
+app.use('/login', indexRouter);
 app.use('/createHouse', createPropertyRouter);
 app.use('/createUser', createUserRouter);
 app.use('/adminPage', AdminPageRouter);
 
+app.use('/loadVisit', loadVisitRouter);
+//app.use('/viewSelectedVisit', selectHouseVisitRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

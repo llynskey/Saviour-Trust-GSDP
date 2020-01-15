@@ -3,7 +3,9 @@ var router = express.Router();
 var dbUtils = require('../controllers/DBUtils');
 
 /* GET home page. */
-router.get('/', 
+router.get('/',
+
+//ensuring user is
 require('connect-ensure-login').ensureLoggedIn(),
 function(req, res) {
 
