@@ -10,330 +10,201 @@
           <h1>House Visits | VisitForm </h1>
         </div>
         <div class="row">
-          <p class="labelVisit">Logged In: <%=//user.displayName%></p>
+          <p class="labelVisit">Logged In: <%=user.displayName%></p>
+        </div>
+
+        <form action="/houseVisit" method="POST">
+        <div class="row">
+          <div class="col-md-12">
+            <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" onchange="getHouseAddress(this);">
+              <option selected>Which location are you visiting...</option>
+              <% for(var a=0; a < houses.length; a++) { %>
+              <option value="<%=houseIds[a]%>">
+                <%= houses[a]%>
+                </option>
+              <% } %>
+            </select>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
   <fieldset>
-    <form action="/houseVisit" method="POST">
-        <div class="form-row">
-          <div class="col-md-12">
-            <label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label>
-            <input type="text" name="hall" class="form-control" id="inputvisits" placeholder="Notes about hallway"></div>
-        </div>
-  
-        <div class="form-row">
-          <div class="col-md-12">
-            <label for="KitchenCheck" class="labelVisit">Kitchen</label>
-            <input type="text" name="kitchen" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-12">
-            <label for="LivingRoomCheck" class="labelVisit">Living Room</label>
-            <input type="text" name="livingRoom" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room">  
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-12">
-            <label for="StairsCheck" class="labelVisit">Stairs/Landing</label>
-            <input type="text" name="stairsLanding" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-12">
-            <label for="BathroomCheck" class="labelVisit">BathroomCheck</label>
-            <input type="text" name="bathroom" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-12">
-            <label for="ToiletCheck" class="labelVisit">Toilet Check</label>
-            <select name="Toilet">
-              <option value="Good"> Good</option>
-              <option value="OK"> OK</option>
-              <option value="Poor"> Poor</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-4">
-            <label for="Room1" class="labelVisit">Room 1 Check</label>
-          </div>
-          <div class="col-md-2">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-          </div>
-          <div class="col-md-6">
-            <label class="custom-control-label" for="defaultUnchecked1">Tenant Present?</label>
-          </div>
-          <input type="text" name="room1Notes" class="form-control" id="Room1Check " placeholder="Notes about Room 1">    
-        </div>
-        
-        <div class="form-row">
-          <div class="col-md-4">
-            <label for="Room2" class="labelVisit">Room 2 Check</label>
-          </div>
-          <div class="col-md-2">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
-          </div>
-          <div class="col-md-6">
-            <label class="custom-control-label" for="defaultUnchecked2">Tenant Present?</label>
-          </div>
-          <input type="text" name="room2Notes" class="form-control" id="Room2Check " placeholder="Notes about Room 2">
-        </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label>
+          <input type="text" name="hall" class="form-control" id="inputvisits" placeholder="Notes about hallway"></div>
+      </div>
 
-        <div class="form-row">
-          <div class="col-md-4">
-            <label for="Room3" class="labelVisit">Room 3 Check</label>
-          </div>
-          <div class="col-md-2">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
-          </div>
-          <div class="col-md-6">
-            <label class="custom-control-label" for="defaultUnchecked3">Tenant Present?</label>
-          </div>
-          <input type="text" name="room3Notes" class="form-control" id="Room3Check " placeholder="Notes about Room 3"></div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <label for="KitchenCheck" class="labelVisit">Kitchen</label>
+          <input type="text" name="kitchen" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen">
         </div>
-
-        <div class="form-row">
-          <div class="col-md-4">
-            <label for="Room4" class="labelVisit">Room 4 Check</label>
-          </div>
-          <div class="col-md-2">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
-          </div>
-          <div class="col-md-6">
-            <label class="custom-control-label" for="defaultUnchecked4">Tenant Present?</label>
-          </div>
-          <input type="text" name="room4Notes" class="form-control" id="Room4Check " placeholder="Notes about Room 4"></div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <label for="LivingRoomCheck" class="labelVisit">Living Room</label>
+          <input type="text" name="livingRoom" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room">  
         </div>
-
-        <div class="form-row">
-          <div class="col-md-6">
-            <label for="Room4" class="labelVisit">Smoke alarms Present?</label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" class="custom-control-input" id="alarmCheck1">
-          </div>
-          <div class="col-md-2">
-            <label class="custom-control-label" for="alarmCheck1"></label>
-          </div>
-          <input type="text" name="smokeAlarmFault" class="form-control" id="Alarm1Faults" placeholder="Fault notes">
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <label for="StairsCheck" class="labelVisit">Stairs/Landing</label>
+          <input type="text" name="stairsLanding" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
         </div>
-
-        <div class="form-row">
-          <div class="col-md-6">
-            <label for="Room4" class="labelVisit">CM alarms Present?</label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" class="custom-control-input" id="alarmCheck1">
-            <label class="custom-control-label" for="alarmCheck1"></label>
-
-          </div>
-          <div class="col-md-2">
-          </div>
-          <input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes">
+      </div>
+      <div class="form-row">>
+        <div class="col-md-12">
+          <label for="BathroomCheck" class="labelVisit">BathroomCheck</label>
+          <input type="text" name="bathroom" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom">
         </div>
-
-        <div class="form-row">
-          <div class="col-md-12">
-            <label class="visitFormLbl" for="Applicances">FRIDGE/FREEZER | WASHER | MICROWAVE | KETTLE | HOOVER | FRYER | TOASTER</label>
-          </div>
-          <input type="text" name="electronicsNote" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
-        </div>
-
-        <div class="form-row">
-          <div class="col-md-7">
-            <label class="visitFormLbl" for="inlineCheckbox1" id="t1-1">Image of Fault</label> 
-          </div>
-          <div class="col-md-5">
-            <input type="file" class="visit-form-control" id="t1-1">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col-md-12">
-            <button type="submit" name="submitBtn">Submit</button>
-          </div>
-        </div>
-    </form>
-  </fieldset>
-</body>
-<!-- 
-
-   <div class="col-md-12">
-            <button type="submit" class="button" id="submitBtn">LogIn</button>
-          </div>
-<body>
-  <div class="container">
-    <div class="visitorForm" action="/visitHouse" method="post">
-      <div class="row" id="r1">
-        <div class="column" id="c4">
-          <div class="logo"><img src="images/saviourTrustLogo.png" alt="" id="logo" /></div>
-        </div>
-
-        <div class="column" id="c5">
-          <button type="button" class="LogOutBtn" onclick="location.href='/logout';">LogOut</button>
-          <h1 class="labelVisit">You are logged in as: <%=//user.displayName%></h1>
-
-          <form action="/houseVisit" method="POST">
-          <label class="Location" for="inlineFormCustomSelectLocation">Property</label>
-          <select class="custom-select Location" name="houseId" id="inlineFormCustomSelectPref">
-            <option selected>Which location are you visiting...</option>
-             <% /*for(var a=0; a < houses.length; a++) { %>
-              <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
-             <% } */%>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <label for="ToiletCheck" class="labelVisit">Toilet Check</label>
+          <select name="Toilet">
+            <option value="Good"> Good</option>
+            <option value="OK"> OK</option>
+            <option value="Poor"> Poor</option>
           </select>
         </div>
       </div>
-
-      <div class="spacer"></div>
-      <div class="row"><label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label></div>
-      <div class="row"><input type="text" name="hall" class="form-control" id="inputvisits"
-          placeholder="Notes about hallway"></div>
-
-      <div class="spacer"></div>
-      <div class="row"><label for="KitchenCheck" class="labelVisit">Kitchen</label></div>
-      <div class="row"><input type="text" name="kitchen" class="form-control" id="KitchenCheck"
-          placeholder="Notes about kitchen"></div>
-
-      <div class="spacer"></div>
-      <div class="row"><label for="LivingRoomCheck" class="labelVisit">Living Room</label></div>
-      <div class="row"><input type="text" name="livingRoom" class="form-control" id="LivingRoomCheck"
-          placeholder="Notes about Living Room"></div>
-
-      <div class="spacer"></div>
-      <div class="row"><label for="StairsCheck" class="labelVisit">Stairs/Landing</label></div>
-      <div class="row"><input type="text" name="stairsLanding" class="form-control" id="StairsCheck"
-          placeholder="Notes about Stairs/Landing"></div>
-
-      <div class="spacer"></div>
-      <div class="row"><label for="BathroomCheck" class="labelVisit">BathroomCheck</label></div>
-      <div class="row"><input type="text" name="bathroom" class="form-control" id="BathroomCheck"
-          placeholder="Notes about Bathroom"></div>
-      <div class="spacer"></div>
-
-
-      <div class="row"><label for="ToiletCheck" class="labelVisit">Toilet Check</label></div>
-      <div class="row">
-        <select name="Toilet">
-          <option value="Good"> Good</option>
-          <option value="OK"> OK</option>
-          <option value="Poor"> Poor</option>
-        </select>
+      <div class="form-row">
+        <div class="col-md-4">
+          <label for="Room1" class="labelVisit">Room 1 Check</label>
+        </div>
+        <div class="col-md-2">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+        </div>
+        <div class="col-md-6">
+          <label class="custom-control-label" for="defaultUnchecked1">Tenant Present?</label>
+        </div>
+        <input type="text" name="room1Notes" class="form-control" id="Room1Check " placeholder="Notes about Room 1">    
+      </div>
+      
+      <div class="form-row">
+        <div class="col-md-4">
+          <label for="Room2" class="labelVisit">Room 2 Check</label>
+        </div>
+        <div class="col-md-2">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
+        </div>
+        <div class="col-md-6">
+          <label class="custom-control-label" for="defaultUnchecked2">Tenant Present?</label>
+        </div>
+        <input type="text" name="room2Notes" class="form-control" id="Room2Check " placeholder="Notes about Room 2">
       </div>
 
+      <div class="form-row">
+        <div class="col-md-4">
+          <label for="Room3" class="labelVisit">Room 3 Check</label>
+        </div>
+        <div class="col-md-2">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
+        </div>
+        <div class="col-md-6">
+          <label class="custom-control-label" for="defaultUnchecked3">Tenant Present?</label>
+        </div>
+        <input type="text" name="room3Notes" class="form-control" id="Room3Check " placeholder="Notes about Room 3"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4">
+          <label for="Room4" class="labelVisit">Room 4 Check</label>
+        </div>
+        <div class="col-md-2">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
+        </div>
+        <div class="col-md-6">
+          <label class="custom-control-label" for="defaultUnchecked4">Tenant Present?</label>
+        </div>
+        <input type="text" name="room4Notes" class="form-control" id="Room4Check " placeholder="Notes about Room 4"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6">
+          <label for="Room4" class="labelVisit">Smoke alarms Present?</label>
+        </div>
+        <div class="col-md-4">
+          <input type="checkbox" class="custom-control-input" id="alarmCheck1">
+        </div>
+        <div class="col-md-2">
+          <label class="custom-control-label" for="alarmCheck1"></label>
+        </div>
+        <input type="text" name="smokeAlarmFault" class="form-control" id="Alarm1Faults" placeholder="Fault notes">
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6">
+          <label for="Room4" class="labelVisit">CM alarms Present?</label>
+        </div>
+        <div class="col-md-4">
+          <input type="checkbox" class="custom-control-input" id="alarmCheck1">
+          <label class="custom-control-label" for="alarmCheck1"></label>
+
+        </div>
+        <div class="col-md-2">
+        </div>
+        <input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes">
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-12">
+          <label class="visitFormLbl" for="Applicances">FRIDGE/FREEZER | WASHER | MICROWAVE | KETTLE | HOOVER | FRYER | TOASTER</label>
+        </div>
+        <input type="text" name="electronicsNote" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-7">
+          <label class="visitFormLbl" for="inlineCheckbox1" id="t1-1">Image of Fault</label> 
+        </div>
+        <div class="col-md-5">
+          <input type="file" class="visit-form-control" id="t1-1">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-12">
+          <button type="submit" name="submitBtn">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="form-row">
+      <div class="col-md-5">
+        <input type="text" name="emailText" class="form-control" id="emailText" placeholder="Write request to worker...">
+        <button type="submit" name="sendEmail" onclick ="sendEmail();">Send Request To Worker
+        </button>
+      </div>
+    </div>
     
-      <div class="row"><label for="Room1" class="labelVisit">Room 1 Check</label></div>
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-        <label class="custom-control-label" for="defaultUnchecked1">Tenant Present?</label>
-      </div>
-      <div class="row"><input type="text" name="room1Notes" class="form-control" id="Room1Check "
-          placeholder="Notes about Room 1"></div>
-      <div class="spacer"></div>
+  </fieldset>
+</body>
 
 
-      
-      
-      <div class="row"><label for="Room2" class="labelVisit">Room 2 Check</label></div>
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
-        <label class="custom-control-label" for="defaultUnchecked2">Tenant Present?</label>
-      </div>
-      <div class="row"><input type="text" name="room2Notes" class="form-control" id="Room2Check "
-          placeholder="Notes about Room 2"></div>
-      <div class="spacer"></div>
+<script>
+var houses = document.getElementsByName("houseId");
+var emailText;
 
+var houseAddress;
+function sendEmail() {
+  emailText = document.getElementById("emailText").value;
+  console.log("success");
+    //var houseaddress = getHouseAddress(houses);
+    alert(houseAddress);
+    $.post('/emailRouter', {houseaddress: houseAddress, email: emailText}, function(data, status)
+    {
+      alert("Email Sent!");
+    });
 
-      
-      
-      <div class="row"><label for="Room3" class="labelVisit">Room 3 Check</label></div>
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
-        <label class="custom-control-label" for="defaultUnchecked3">Tenant Present?</label>
-      </div>
-      <div class="row"><input type="text" name="room3Notes" class="form-control" id="Room3Check "
-          placeholder="Notes about Room 3"></div>
-      <div class="spacer"></div>
-
-
-      
-  
-      <div class="row"><label for="Room4" class="labelVisit">Room 4 Check</label></div>
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
-        <label class="custom-control-label" for="defaultUnchecked4">Tenant Present?</label>
-      </div>
-      <div class="row"><input type="text" name="room4Notes" class="form-control" id="Room4Check "
-          placeholder="Notes about Room 4"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      
-      <div class="row">
-        <div class="col-4">
-          <div class="row"><label for="Room4" class="labelVisit">Smoke alarms Present?</label></div>
-        </div>
-        <div class="col-2">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="alarmCheck1">
-            <label class="custom-control-label" for="alarmCheck1"></label>
-          </div>
-        </div>
-        <div class="col-6">
-          <div><input type="text" name="smokeAlarmFault" class="form-control" id="Alarm1Faults" placeholder="Fault notes" ></div>
-        </div>
-        </div>
-      </div>
-
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      
-      <div class="row">
-        <div class="col-4">
-          <div class="row"><label for="Room4" class="labelVisit">CM alarms Present?</label></div>
-        </div>
-        <div class="col-2">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="alarmCheck1">
-            <label class="custom-control-label" for="alarmCheck1"></label>
-          </div>
-        </div>
-        <div class="col-6">
-          <div><input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes" ></div>
-        </div>
-
-        </div>
-        <div class="spacer"></div>
-        <label class="visitFormLbl" for="Applicances">FRIDGE/FREEZER | WASHER | MICROWAVE | KETTLE | HOOVER | FRYER | TOASTER</label>
-        <div class="spacer"></div>
-        <div class="row"><input type="text" name="electronicsNote" class="form-control" id="StairsCheck"
-          placeholder="Notes about Stairs/Landing"></div>
-
-        <div class="spacer"></div>
-        <div class="tenant">
-          <label class="visitFormLbl" for="inlineCheckbox1" id="t1-1">Image of Fault</label>
-        </div>
-      </div>
-      <div class="tenant">
-        <input type="file" class="visit-form-control" id="t1-1">
-      </div>
-      
-      
-      <div class="spacer"></div>
-  </div>
- 
-
-  <div class="spacer"></div>
-  <button type="submit" name="submitBtn">Submit</button>
-  </div>
-</form>
-     
-
-</bodyid="imgFooter"> -->
-
+  }
+  function getHouseAddress(houses) {
+    houseAddress = houses.options[houses.selectedIndex].text;
+    alert(houseAddress);
+}
+</script>
 
 
 <%- include partials/footer.ejs %>

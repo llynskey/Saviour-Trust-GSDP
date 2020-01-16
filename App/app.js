@@ -15,32 +15,13 @@ var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
 var supportRouter = require('./routes/supportWorker');
 var logoutRouter = require('./routes/logout');
-var createUserRouter = require('./routes/createUser')
-var createPropertyRouter = require('./routes/createProperty')
-var AdminPageRouter = require('./routes/AdminPage')
-
-/*
-passport.use(new strategy(
-  function(username, password, done) {
-    User.findOne({ username= username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message= 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message= 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-
-var visitRouter = require('./routes/VisitForm')
-var supportRouter = require('./routes/supportWorker')
-var createUserRouter = require('./routes/createUser')
-var AdminPageRouter = require('./routes/AdminPage')
-var createPropertyRouter = require('./routes/createProperty')
-var cre*/
+var createUserRouter = require('./routes/createUser');
+var AdminPageRouter = require('./routes/AdminPage');
+var createPropertyRouter = require('./routes/createProperty');
+var loadVisitRouter = require('./routes/loadVisit');
+var emailRouter = require("./routes/emailRouter");
+var visitHouseRouter = require('./routes/houseVisitSubmit');
+//var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 
 passport.use(new strategy(
@@ -73,8 +54,8 @@ app.use(require('morgan')('combined'));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -87,11 +68,15 @@ app.use('/users', usersRouter);
 app.use('/visit', visitRouter);
 app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
-app.use('/login', indexRouter)
-app.use('/createUser',createUserRouter)
-app.use('/createProperty',createPropertyRouter)
-app.use('/adminPage', AdminPageRouter)
+app.use('/houseVisit', visitHouseRouter);
+app.use('/login', indexRouter);
+app.use('/createHouse', createPropertyRouter);
+app.use('/createUser', createUserRouter);
+app.use('/adminPage', AdminPageRouter);
 
+app.use('/loadVisit', loadVisitRouter);
+app.use('/emailRouter', emailRouter);
+//app.use('/viewSelectedVisit', selectHouseVisitRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

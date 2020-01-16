@@ -14,10 +14,12 @@
                 <div class="row">
                     <div class = "col-sm-12">
                     <h2>Select A Property to view information about</h2>
-                    <select class="custom-select" class="selectSupport" size="31">
-                        <option value="One"></option>
-                        <option value="Two"></option>
-                        <option value="Three"></option>
+
+                    <select class="custom-select selectSupport" name="houseId"class="" size="31" onchange="fillForm()">
+
+                      <% for(var a=0; a < houses.length; a++) { %>
+                        <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
+                       <% } %>                        
                     </select>
                     </div>
                 </div>
@@ -46,71 +48,73 @@
             </table>  
                 </div>  
             </div>
-                <hr class="d-sm-none">
-            </div>
-            <div class="col-sm-8">
-                <h2>Notes</h2>
-                <h5>Notes about the rooms and tenants of the selected property.</h5>
-                            
-                <table class="table table-bordered">
-                    <col width = "20%">
-                    <col width = "80%">
-                <thead>
-                    <tr>
-                    <th>Rooms</th>
-                    <th>Notes</th>
-                    
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>Hallway</td>
-                    <td>N/A</td>
-                    
-                    </tr>
-                    <tr>
-                    <td>Kitchen</td>
-                    <td>N/A</td>
+
                 
-                    </tr>
-                    <tr>
-                    <td>Living Room</td>
-                    <td>N/A</td>
+            <hr class="d-sm-none">
+          </div>
+          <div class="col-sm-8">
+              <h2>Notes</h2>
+              <h5>Notes about the rooms and tenants of the selected property.</h5>
+                          
+              <table class="table table-bordered">
+                  <col width = "20%">
+                  <col width = "80%">
+              <thead>
+                  <tr>
+                  <th>Rooms</th>
+                  <th>Notes</th>
+                  
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>Hallway</td>
+                  <td id="hall"> </td>
+                  
+                  </tr>
+                  <tr>
+                  <td>Kitchen</td>
+                  <td id="kitchen"></td>
+              
+                  </tr>
+                  <tr>
+                  <td>Living Room</td>
+                  <td id="livingRoom"></td>
+              
+                  </tr>
+                  <tr>
+                      <td>Stairs</td>
+                      <td id="stairsLanding"></td>
+              
+                  </tr>
+                  <tr>
+                      <td>Toilet</td>
+                      <td id="bathroom"></td>
+              
+                  </tr>
+                  <tr>
+                      <td>Room 1</td>
+                      <td id="room1"></td>
+              
+                  </tr>
+                  <tr>
+                      <td>Room 2</td>
+                      <td id="room2"></td>
+              
+                  </tr>
+                  <tr>
+                      <td>Room 3</td>
+                      <td id="room3"></td>
+              
+                  </tr>
+                  <tr>
+                      <td>Room 4</td>
+                      <td id="room4"></td>
+              
+                  </tr>
+              </tbody>
+              </table>
                 
-                    </tr>
-                    <tr>
-                        <td>Stairs</td>
-                        <td>N/A</td>
-                
-                    </tr>
-                    <tr>
-                        <td>Toilet</td>
-                        <td>N/A</td>
-                
-                    </tr>
-                    <tr>
-                        <td>Room 1</td>
-                        <td>N/A</td>
-                
-                    </tr>
-                    <tr>
-                        <td>Room 2</td>
-                        <td>N/A</td>
-                
-                    </tr>
-                    <tr>
-                        <td>Room 3</td>
-                        <td>N/A</td>
-                
-                    </tr>
-                    <tr>
-                        <td>Room 4</td>
-                        <td>N/A</td>
-                
-                    </tr>
-                </tbody>
-                </table>
-            
                 <br>
                 <h2>Images</h2>
                 <h5>Images of all appliances</h5><!--constant immages-->
@@ -145,5 +149,44 @@
           </fieldset>
 
 </body>
-  
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  /*var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+
+  function validatePassword() {
+    if (password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }*/
+
+  // form to fill in the visit 
+  function fillForm() {
+    var selected = document.getElementsByClassName("selectSupport")[0].selectedIndex+1;
+    
+    $.post('/loadVisit', {houseId: selected}, function(data, status){
+    console.log(data);
+    
+    document.getElementById("hall").innerHTML = data.hall;
+    document.getElementById("kitchen").innerHTML = data.kitchen;
+    document.getElementById("livingRoom").innerHTML = data.livingRoom;
+    document.getElementById("stairsLanding").innerHTML = data.stairsLanding;
+    document.getElementById("bathroom").innerHTML = data.bathroom;
+    document.getElementById("room1").innerHTML = data.room1;
+    document.getElementById("room2").innerHTML = data.room2;
+    document.getElementById("room3").innerHTML = data.room3;
+    document.getElementById("room4").innerHTML = data.room4;
+    
+  });
+
+
+}
+
+  //password.onchange = validatePassword;
+  //confirm_password.onkeyup = validatePassword;
+
+</script>
 <%- include partials/footer.ejs %>
