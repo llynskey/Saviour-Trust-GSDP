@@ -6,7 +6,7 @@ var router = express.Router();
 const connection = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "SaviourTrust44",
   port: 3306,
   database: "test"
 });
@@ -117,36 +117,6 @@ connection.getConnection(function(err, connection) {
 });
 };
 
-module.exports.createHouse = (req, callback) => {
-console.log(req.body);
-
-var house = {
-  houseId: req.body.houseId,
-  houseNumber: req.body.houseNumber,
-  street: req.body.street,
-  city: req.body.city,
-  counter: req.body.county,
-  postcode: req.body.postcode
-
-  //room1 = req.body.room1Id
-};
-connection.getConnection(function(err, connection) {
-  var query = connection.query(
-    "insert into house set ?",
-    house,
-    function(err, result) {
-      if (err) {
-        // if there is an error it will be displayed on the console
-        console.error(err);
-        return;
-      }
-      console.error(result);
-    });
-  console.log("written to database!:D");
-  callback();
-
-});
-};
 
 module.exports.getWorker = callback => {
   console.log(req.body);
@@ -229,3 +199,70 @@ connection.getConnection(function(err, connection) {
   });
 });
 };
+
+module.exports.createNewUser = (req, callback)=>{
+
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
+  var fullname = firstname+" "+lastname;
+  var dob = req.body.DOB;
+  var user = {
+    username: req.body.username,
+    userpassword: req.body.password,
+    firstname: firstname,
+    lastname: lastname,
+    displayname: fullname,
+    dob: dob,
+    userType: req.body.Type
+  };
+
+  console.dir(user);
+  connection.getConnection(function(err, connection) {
+    var query = 
+    connection.query("insert into useraccounts set ?", user, function(err, dbRes) {
+      
+        if (err) {
+          // if there is an error it will be displayed on the console
+          console.error(err);
+          return;
+        }
+      });
+    console.log("written to database!:D");
+    callback();
+  
+  });
+};
+
+module.exports.createHouse = (req, callback) => {
+  console.log(req.body);
+  
+  var house = {
+    //houseId: req.body.houseId,
+    houseNumber: req.body.houseNumber,
+    street: req.body.street,
+    city: req.body.city,
+    county: req.body.county,
+    postcode: req.body.postcode
+  
+    //room1 = req.body.room1Id
+  };
+
+  console.dir(house);
+  connection.getConnection(function(err, connection) {
+    var query = connection.query(
+      "insert into house set ?",
+      house,
+      function(err, result) {
+        if (err) {
+          // if there is an error it will be displayed on the console
+          console.error(err);
+          return;
+        }
+        console.error(result);
+      });
+    console.log("written to database!:D");
+    callback();
+  
+  });
+};
+  

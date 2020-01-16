@@ -22,6 +22,8 @@ var loadVisitRouter = require('./routes/loadVisit');
 var emailRouter = require("./routes/emailRouter");
 var visitHouseRouter = require('./routes/houseVisitSubmit');
 var visitDatesRouter = require('./routes/loadDates');
+var submitNewUserRouter = require('./routes/newUserSubmit');
+var submitNewHouseRouter = require('./routes/createHouseSubmit')
 //var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 
@@ -78,6 +80,8 @@ app.use('/adminPage', AdminPageRouter);
 app.use('/loadVisit', loadVisitRouter);
 app.use('/emailRouter', emailRouter);
 app.use('/loadDates', visitDatesRouter);
+app.use('/submitNewUser', submitNewUserRouter);
+app.use('/submitNewHouse', submitNewHouseRouter);
 //app.use('/viewSelectedVisit', selectHouseVisitRouter);
 
 // catch 404 and forward to error handler

@@ -25,6 +25,24 @@ var records = [
   }
 ];
 
+exports.addNewUser = function newUser(req){
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
+  var user = {
+    username: req.body.username,
+    password: req.body.password,
+    firstname: firstname,
+    lastname: lastname,
+    displayName: firstname+" "+lastname,
+    DOB: req.body.DOB,
+    Type: req.body.Type
+  }
+  records.push(user);
+}
+
+
+
+
 exports.findById = function(id, cb) {
   process.nextTick(function() {
     var idx = id - 1;
