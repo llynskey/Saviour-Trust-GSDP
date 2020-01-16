@@ -8,46 +8,52 @@
 
     <fieldset>
     <div class="container" style="margin-top:30px">
-        <div class="row">
-            <div class="col-sm-4">
-                
-                <div class="row">
-                    <div class = "col-sm-12">
-                    <h2>Select A Property to view information about</h2>
-
-                    <select class="custom-select selectSupport" name="houseId"class="" size="31" onchange="fillForm()">
-
-                      <% for(var a=0; a < houses.length; a++) { %>
-                        <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
-                       <% } %>                        
-                    </select>
-                    </div>
-                </div>
-            <div class="row">
-                <div class = "col-sm-12">
-                <table class="table table-bordered">
-                <thead>
-                    <tr>
-                    <th width="20%">Alarm</th m>
-                    <th width="20%">working</th>
-                    <th>Faults</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>Smoke Alarm</td>
-                    <td><input class="form-check-input" type="checkbox"></td>
-                    <td>N/A</td>     
-                    </tr>
-                    <tr>
-                    <td>CM Alarm</td>
-                    <td><input class="form-check-input" type="checkbox"></td>
-                    <td>N/A</td>
-                    </tr>  
-                </tbody>
-            </table>  
-                </div>  
+      <div class="row">
+        <div class="col-sm-4">      
+          <div class="row">
+            <div class = "col-sm-12">
+              <h2>Select A Property to view information about</h2>
+              <select class="selectpicker" data-live-search="true" name="houseId">
+                <% for(var a=0; a < houses.length; a++) { %>
+                  <option value="<%=houseIds[a]%>"> 
+                  <%= houses[a] %> </option>
+                  <% } %>
+              </select>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+            <h2>Select A date to view the house Visit Details</h2>
+              <select class="selectpicker" data-live-search="true" name="dates" id="dateSelect" onchange="fillForm()">
+                                    
+                </select>
+            </div>
+          </div>
+          <div class="row">
+              <div class = "col-sm-12">
+              <table class="table table-bordered">
+              <thead>
+                  <tr>
+                  <th width="20%">Alarm</th m>
+                  <th width="20%">working</th>
+                  <th>Faults</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>Smoke Alarm</td>
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>N/A</td>     
+                  </tr>
+                  <tr>
+                  <td>CM Alarm</td>
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>N/A</td>
+                  </tr>  
+              </tbody>
+          </table>  
+              </div>  
+          </div>
 
                 
             <hr class="d-sm-none">
@@ -189,4 +195,3 @@
   //confirm_password.onkeyup = validatePassword;
 
 </script>
-<%- include partials/footer.ejs %>
