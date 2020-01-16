@@ -19,7 +19,7 @@ var records = [
     id: 3,
     username: "visit",
     password: "visit",
-    displayName: "Support Worker",
+    displayName: "House Visitor",
     emails: [{ value: "" }],
     role: "visit"
   }
