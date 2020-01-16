@@ -3,12 +3,12 @@ var router = express.Router();
 var dbUtils = require("../controllers/DBUtils");
 
 router.post("/", function(req, res) {
-    dbUtils.getLatestHouseVisit(req, function(visitDates) 
+    dbUtils.getVisitDates(req, function(visitDates) 
         {
 
-        console.log(visitDates);
-    
-        res.json({dates: visitDates});
+        console.dir("Date: " + visitDates);
+        console.log(JSON.stringify(visitDates));
+        res.json(visitDates);
 
     });
 });

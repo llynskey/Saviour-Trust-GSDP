@@ -9,7 +9,8 @@ router.post("/", function(req, res) {
   dbUtils.makeVisit(req, function() {});
 
     
-    res.sendStatus(200);
+    res.redirect('/visit');
+    
     console.log("called function!! :D");
     
   

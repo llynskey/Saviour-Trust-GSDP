@@ -30,7 +30,6 @@ module.exports.getHouses = callback => {
       for (let i = 0; i < houseArray.length; i++) {
         // getting next address in the array
         var houseId = houseArray[i].houseId;
-        console.log(houseId);
         var address = houseArray[i].houseNumber + " " + houseArray[i].street;
         houseIds.push(houseId);
         addressArray.push(address);
@@ -43,11 +42,13 @@ module.exports.getHouses = callback => {
 
 // getting the information from visit form
 module.exports.makeVisit = (req, callback) => {
+  var date = new Date();
+  var formatted_date =   date.getFullYear() + "-" + (("0" + (date.getMonth() + 1)).slice(-2))    + "-" +  date.getDate();
 
   // creating a visit variable that contains all data fields
   var visit = {
-    
     houseId: req.body.houseId,
+    dateOfVisit: formatted_date,
     hall: req.body.hall,
     kitchen: req.body.kitchen,
     livingRoom: req.body.livingRoom,
@@ -60,7 +61,6 @@ module.exports.makeVisit = (req, callback) => {
     electronicsNote: req.body.electronicsNote,
     smokeAlarm: req.body.smokeAlarmFault,
     cmAlarms: req.body.cmAlarmFault,
-    //cmAlarmFault: req.body.cmAlarmFault,
     cmAlarmLocation: req.body.cmAlarmLocation,
     smokeAlarmLocations: req.body.smokeAlarmLocations
   };
@@ -78,7 +78,6 @@ module.exports.makeVisit = (req, callback) => {
         console.error(result);
       }
     );
-    console.log("written to database!:D");
     callback();
   });
 };
@@ -108,7 +107,6 @@ connection.getConnection(function(err, connection) {
       }
       console.error(result);
     });
-  console.log("written to database!:D");
   callback();
 
 });
@@ -116,10 +114,7 @@ connection.getConnection(function(err, connection) {
 
 
 module.exports.getWorker = callback => {
-  console.log(req.body);
-
   
-
   var query = "SELECT * FROM worker ORDER BY workerId";
   
   connection.getConnection(function(err, connection) {
@@ -128,7 +123,6 @@ module.exports.getWorker = callback => {
     let workerArray = [];
     workerArray = dbRes;
 
-    console.log(workerArray);
   });
     callback(workerArray);
   });
@@ -140,33 +134,31 @@ module.exports.getVisitDates = (req, callback) =>
   var houseId = req.body.houseId;
 
   filter = [houseId];
-
-  var query = ("SELECT dateOfVisit from housevisit where houseId = ? ORDER BY visitId DESC LIMIT 0, 1");
+  console.log(filter);
+  var query = ("SELECT dateOfVisit from housevisit where houseId = ?");
   connection.getConnection(function(err, connection)
   {
     connection.query(query, filter, function(err, dbRes)
     {
       if (err) console.log(err);
       let visitDates = [];
-
       visitDates = dbRes;
-
-
+      
       callback(visitDates);
 
     });
   });
 }
-module.exports.getLatestHouseVisit = (req, callback)=> {
+module.exports.getVisitByDate = (req, callback)=> {
 // getting houseId
 var houseId = req.body.houseId;
-console.dir(req.body);
-console.log("houseId");
+var dateOfVisit = req.body.dateOfVisit;
 
 // using filter to search by houseId variable
-filter  = [houseId];
+filter  = [houseId, dateOfVisit];
+console.dir(filter);
 // quer to get an array of with all the latest visit details found by appropriate houseId
-var query = "SELECT * FROM housevisit where houseId = ? ORDER BY visitId DESC LIMIT 0, 1";
+var query = "SELECT * FROM housevisit WHERE houseId = ? AND dateOfVisit = ?";
 connection.getConnection(function(err, connection) {
   // creating array and storing house names
   connection.query(query, filter, function(err, dbRes) {
@@ -174,11 +166,14 @@ connection.getConnection(function(err, connection) {
     let visitArray = [];
     
     visitArray = dbRes;
+    console.dir(dbRes);
     var hallNotes = visitArray[0].hall;
     var kitchenNotes = visitArray[0].kitchen;
     var livingRoomNotes = visitArray[0].livingRoom;
     var stairsNotes = visitArray[0].stairsLanding;
     var bathroomNotes = visitArray[0].bathroom;
+    var smokeAlarmNotes = visitArray[0].smokeAlarm;
+    var cmAlarmNotes = visitArray[0].cmAlarms;
     var room1Notes = visitArray[0].room1Notes;
     var room2Notes = visitArray[0].room2Notes;
     var room3Notes = visitArray[0].room3Notes;
@@ -186,11 +181,8 @@ connection.getConnection(function(err, connection) {
     
      //for loop to create address strings and send to array
 
-
     
-    console.log(visitArray);
-    
-    callback(hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes,room1Notes,room2Notes,room3Notes,room4Notes);
+    callback(hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes, smokeAlarmNotes, cmAlarmNotes,room1Notes,room2Notes,room3Notes,room4Notes);
  
   });
 });
@@ -212,7 +204,6 @@ module.exports.createNewUser = (req, callback)=>{
     userType: req.body.Type
   };
 
-  console.dir(user);
   connection.getConnection(function(err, connection) {
     var query = 
     connection.query("insert into useraccounts set ?", user, function(err, dbRes) {
@@ -223,7 +214,6 @@ module.exports.createNewUser = (req, callback)=>{
           return;
         }
       });
-    console.log("written to database!:D");
     callback();
   
   });
@@ -233,17 +223,14 @@ module.exports.createHouse = (req, callback) => {
   console.log(req.body);
   
   var house = {
-    //houseId: req.body.houseId,
     houseNumber: req.body.houseNumber,
     street: req.body.street,
     city: req.body.city,
     county: req.body.county,
     postcode: req.body.postcode
   
-    //room1 = req.body.room1Id
   };
 
-  console.dir(house);
   connection.getConnection(function(err, connection) {
     var query = connection.query(
       "insert into house set ?",
@@ -256,7 +243,6 @@ module.exports.createHouse = (req, callback) => {
         }
         console.error(result);
       });
-    console.log("written to database!:D");
     callback();
   
   });
@@ -274,9 +260,6 @@ module.exports.validateUser = (username, callback) => {
     // getting user
     var user = [];
     user = dbRes;
-    //var userUsername = user[0].username;
-    //var userPassword = user[0].userpassword;
-    //console.log(userPassword);
 
 
   callback(user);

@@ -23,7 +23,7 @@
         <form action="/houseVisit" method="POST">
         <div class="row">
           <div class="col-md-12">
-            <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" onchange="getHouseAddress(this);">
+            <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" data-size="4" onchange="getHouseAddress(this);">
               <option selected>Which location are you visiting...</option>
               <% for(var a=0; a < houses.length; a++) { %>
               <option value="<%=houseIds[a]%>">
@@ -189,8 +189,6 @@
       </div>
     </div>
     
- 
-    
   </fieldset>
 </form>
 </body>
@@ -203,12 +201,9 @@ var emailText;
 var houseAddress;
 function sendEmail() {
   emailText = document.getElementById("emailText").value;
-  console.log("success");
     //var houseaddress = getHouseAddress(houses);
-    alert(houseAddress);
     $.post('/emailRouter', {houseaddress: houseAddress, email: emailText}, function(data, status)
     {
-      alert("Email Sent!");
     });
 
   }
