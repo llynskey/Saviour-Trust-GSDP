@@ -4,6 +4,13 @@
     <div class="jumbotron text-center" style="margin-bottom:0">
         <h1>Support Worker Site</h1>
         <p>Information from all visits can be found here</p> 
+        <div class="form-row">
+          <div class="col-md-12">
+            <a href="login">
+              <button id="loginButton" >Logout</button>
+            </a>
+          </div>
+          </div>
     </div>
 
     <fieldset>
@@ -17,9 +24,9 @@
 
                     <select class="custom-select selectSupport" name="houseId"class="" size="31" onchange="fillForm()">
 
-                      <% for(var a=0; a < houses.length; a++) { %>
-                        <option value="<%=houseIds[a]%>"> <%= houses[a] %> </option>
-                       <% } %>                        
+                      <%// for(var a=0; a < houses.length; a++) { %>
+                        <option value="<%=houseIds[a]%>"> <%=// houses[a] %> </option>
+                       <%// } %>                        
                     </select>
                     </div>
                 </div>

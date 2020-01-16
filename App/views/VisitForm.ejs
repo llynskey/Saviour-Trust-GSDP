@@ -9,8 +9,15 @@
         <div class="row">
           <h1>House Visits | VisitForm </h1>
         </div>
+        <div class="form-row">
+          <div class="col-md-12">
+            <a href="login">
+              <button id="loginButton" >Logout</button>
+            </a>
+          </div>
+        </div>
         <div class="row">
-          <p class="labelVisit">Logged In: <%=user.displayName%></p>
+          <!-- <p class="labelVisit">Logged In: <%=//user.displayName%></p> -->
         </div>
 
         <form action="/houseVisit" method="POST">
@@ -18,11 +25,11 @@
           <div class="col-md-12">
             <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" onchange="getHouseAddress(this);">
               <option selected>Which location are you visiting...</option>
-              <% for(var a=0; a < houses.length; a++) { %>
-              <option value="<%=houseIds[a]%>">
-                <%= houses[a]%>
+              <!-- <%// for(var a=0; a < houses.length; a++) { %>
+              <option value="<%=//houseIds[a]%>">
+                <%//= houses[a]%>
                 </option>
-              <% } %>
+              <%// } %> -->
             </select>
           </div>
         </div>
@@ -158,11 +165,11 @@
       </div>
 
       <div class="form-row">
-        <div class="col-md-7">
+        <div class="col-md-12">
           <label class="visitFormLbl" for="inlineCheckbox1" id="t1-1">Image of Fault</label> 
         </div>
-        <div class="col-md-5">
-          <input type="file" class="visit-form-control" id="t1-1">
+        <div class="col-md-12">
+          <input type="file" class="visit-form-control" id="t1-1" multiple>
         </div>
       </div>
 
@@ -171,16 +178,21 @@
           <button type="submit" name="submitBtn">Submit</button>
         </div>
       </div>
-    </form>
+
+    
     <div class="form-row">
-      <div class="col-md-5">
+      <div class="col-md-6">
         <input type="text" name="emailText" class="form-control" id="emailText" placeholder="Write request to worker...">
-        <button type="submit" name="sendEmail" onclick ="sendEmail();">Send Request To Worker
-        </button>
+      </div>
+      <div class="col-md-6">
+        <button id="sendButton" type="submit" name="sendEmail" onclick ="sendEmail();">Send</button>
       </div>
     </div>
     
+ 
+    
   </fieldset>
+</form>
 </body>
 
 

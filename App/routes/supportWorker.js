@@ -3,17 +3,7 @@ var router = express.Router();
 var dbUtils = require("../controllers/DBUtils");
 
 /* GET users listing. */
-router.get("/", function(req, res) {
-  dbUtils.getHouses(function(houseIds, addressArray) {
-    var houses = addressArray;
-    var houseIds = houseIds;
-
-    res.render("supportWorker", {
-      title: "Saviour Trust",
-      houseIds: houseIds,
-      houses: houses
-    });
-  });
+router.get('/', function(req, res, next) {
+  res.render('supportWorker', { title: 'Saviour Trust' });
 });
-
 module.exports = router;
