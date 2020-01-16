@@ -1,3 +1,4 @@
+var db = require('../controllers/DBUtils');
 var records = [
   {
     id: 1,
@@ -40,6 +41,24 @@ exports.addNewUser = function newUser(req){
   records.push(user);
 }
 
+exports.loadDbUser = function(user)
+{
+  console.log("user[]" + user[0].userType);
+
+  var newuser = {
+    id: 4,
+    username: user[0].username,
+    password: user[0].userpassword,
+    firstname: user[0].firstname,
+    lastname: user[0].lastname,
+    displayName: user[0].firstname+" "+user.lastname,
+    DOB: user[0].dob,
+    role: user[0].userType
+  }
+  console.log("DB" + newuser.username);
+  records.push(newuser);
+  
+}
 
 
 
@@ -65,3 +84,9 @@ exports.findByUsername = function(username, cb) {
     return cb(null, null);
   });
 };
+
+ /*dbUtils.validateUser(username, function(password) {  
+
+      var userPassword = password;
+      console.log(userPassword);
+    });*/

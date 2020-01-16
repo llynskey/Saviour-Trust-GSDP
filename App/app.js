@@ -29,12 +29,24 @@ var submitNewHouseRouter = require('./routes/createHouseSubmit')
 
 passport.use(new strategy(
   function(username, password, cb) {
+    sqlConnection.validateUser(username,function(u){
+      console.log("stuff" + u);
+    db.users.loadDbUser(u);
+    
+    console.log("boi");
     db.users.findByUsername(username, function(err, user) {
+      console.log("called");
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
       return cb(null, user);
-    });
+    })});
+    /*sqlConnection.validateUser(username, function(dbpassword){
+      if (password != dbpassword) { return cb(null, false); }
+      return cb(null, user);
+    });*/
+
+    
   }));
 
 passport.serializeUser(function(user, cb) {

@@ -265,4 +265,26 @@ module.exports.createHouse = (req, callback) => {
   
   });
 };
+
+module.exports.validateUser = (username, callback) => {
+
+  
+  // passing through params
+  filter = [username]
+
+  var query = "SELECT * FROM useraccounts WHERE username = ?";
+  connection.query(query, filter, function(err, dbRes) {
+    if (err) console.log(err);
+    // getting user
+    var user = [];
+    user = dbRes;
+    var userUsername = user[0].username;
+    var userPassword = user[0].userpassword;
+    console.log(userPassword);
+
+
+  callback(user);
+
+});
+};
   
