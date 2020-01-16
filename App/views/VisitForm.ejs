@@ -16,7 +16,7 @@
         <form action="/houseVisit" method="POST">
         <div class="row">
           <div class="col-md-12">
-            <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" onchange="getHouseAddress(this);">
+            <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" data-size="4" onchange="getHouseAddress(this);">
               <option selected>Which location are you visiting...</option>
               <% for(var a=0; a < houses.length; a++) { %>
               <option value="<%=houseIds[a]%>">
@@ -179,7 +179,6 @@
         </button>
       </div>
     </div>
-    
   </fieldset>
 </body>
 
@@ -200,7 +199,7 @@ function sendEmail() {
     });
 
   }
-  function getHouseAddress(houses) {
+  function getHouseAddress(houses,) {
     houseAddress = houses.options[houses.selectedIndex].text;
     alert(houseAddress);
 }

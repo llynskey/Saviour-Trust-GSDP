@@ -46,11 +46,14 @@ module.exports.getHouses = callback => {
 // getting the information from visit form
 module.exports.makeVisit = (req, callback) => {
   console.log(req.body);
+  var date = new Date();
+  var formatted_date =   date.getFullYear() + "-" + (("0" + (date.getMonth() + 1)).slice(-2))    + "-" +  date.getDate();
 
+  //var formattedDate = convertDate(date);
   // creating a visit variable that contains all data fields
   var visit = {
-    
     houseId: req.body.houseId,
+    dateOfVisit: formatted_date,
     hall: req.body.hall,
     kitchen: req.body.kitchen,
     livingRoom: req.body.livingRoom,
@@ -173,33 +176,40 @@ module.exports.getVisitDates = (req, callback) =>
   var houseId = req.body.houseId;
 
   filter = [houseId];
-
-  var query = ("SELECT dateOfVisit from housevisit where houseId = ? ORDER BY visitId DESC LIMIT 0, 1");
+  console.log(filter);
+  var query = ("SELECT dateOfVisit from housevisit where houseId = ?");
   connection.getConnection(function(err, connection)
   {
     connection.query(query, filter, function(err, dbRes)
     {
       if (err) console.log(err);
       let visitDates = [];
-
       visitDates = dbRes;
+      
+      for(let i = 0; i < visitDates.length; i++)
+      {
+      console.dir("THESE ARE THE DATES: " + visitDates[i]);
+      }
 
-
+     // JSON.stringify(visitDates);
       callback(visitDates);
 
     });
   });
 }
-module.exports.getLatestHouseVisit = (req, callback)=> {
+module.exports.getVisitByDate = (req, callback)=> {
 // getting houseId
 var houseId = req.body.houseId;
-console.dir(req.body);
+var dateOfVisit = req.body.dateOfVisit;
+
+console.dir("DATE:" + dateOfVisit);
 console.log("houseId");
 
 // using filter to search by houseId variable
-filter  = [houseId];
+filter  = [houseId, dateOfVisit];
+console.dir(filter);
 // quer to get an array of with all the latest visit details found by appropriate houseId
-var query = "SELECT * FROM housevisit where houseId = ? ORDER BY visitId DESC LIMIT 0, 1";
+var query = "SELECT * FROM housevisit WHERE houseId = ? AND dateOfVisit = ?";
 connection.getConnection(function(err, connection) {
   // creating array and storing house names
   connection.query(query, filter, function(err, dbRes) {
@@ -207,11 +217,14 @@ connection.getConnection(function(err, connection) {
     let visitArray = [];
     
     visitArray = dbRes;
+    console.dir(dbRes);
     var hallNotes = visitArray[0].hall;
     var kitchenNotes = visitArray[0].kitchen;
     var livingRoomNotes = visitArray[0].livingRoom;
     var stairsNotes = visitArray[0].stairsLanding;
     var bathroomNotes = visitArray[0].bathroom;
+    var smokeAlarmNotes = visitArray[0].smokeAlarm;
+    var cmAlarmNotes = visitArray[0].cmAlarms;
     var room1Notes = visitArray[0].room1Notes;
     var room2Notes = visitArray[0].room2Notes;
     var room3Notes = visitArray[0].room3Notes;
@@ -219,13 +232,18 @@ connection.getConnection(function(err, connection) {
     
      //for loop to create address strings and send to array
 
-
-    
-    console.log(visitArray);
     
     // connection.end();
-    callback(hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes,room1Notes,room2Notes,room3Notes,room4Notes);
+    callback(hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes, smokeAlarmNotes, cmAlarmNotes,room1Notes,room2Notes,room3Notes,room4Notes);
  
   });
 });
 };
+
+/*function convertDate(dateString, callback){
+  var dateparts = dateString.split('-');
+  var newDate = dateparts[2]+"-"+dateparts[1]+"-"+dateparts[0];
+  callback();
+
+  return newDate;
+};*/

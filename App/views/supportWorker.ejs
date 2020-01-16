@@ -1,199 +1,258 @@
 <%- include partials/header.ejs %>
- 
-<body>
-    <div class="jumbotron text-center" style="margin-bottom:0">
-        <h1>Support Worker Site</h1>
-        <p>Information from all visits can be found here</p> 
-    </div>
 
-    <fieldset>
+<body>
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>Support Worker Site</h1>
+    <p>Information from all visits can be found here</p>
+  </div>
+
+  <fieldset>
     <div class="container" style="margin-top:30px">
       <div class="row">
-        <div class="col-sm-4">      
-          <div class="row">
-            <div class = "col-sm-12">
-              <h2>Select A Property to view information about</h2>
-              <select class="selectpicker" data-live-search="true" name="houseId" onchange="fillForm()">
-                <% for(var a=0; a < houses.length; a++) { %>
-                  <option value="<%=houseIds[a]%>"> 
-                  <%= houses[a] %> </option>
-                  <% } %>
-              </select>
-            </div>
-          </div>
+        <div class="col-sm-4">
           <div class="row">
             <div class="col-sm-12">
-            <h2>Select A date to view the house Visit Details</h2>
-              <select class="selectpicker" data-live-search="true" name="dates" id="dateSelect" >
-                                    
+              <form>
+                <h2>Select A Property to view information about</h2>
+                <select class="selectpicker" data-live-search="true" name="houseId" data-size="4" onchange="clearList(function(){});" >
+                  <% for(var a=0; a < houses.length; a++) { %>
+                  <option value="<%=houseIds[a]%>">
+                    <%= houses[a] %> </option>
+                  <% } %>
                 </select>
             </div>
           </div>
           <div class="row">
-              <div class = "col-sm-12">
-              <table class="table table-bordered">
-              <thead>
-                  <tr>
-                  <th width="20%">Alarm</th m>
-                  <th width="20%">working</th>
-                  <th>Faults</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                  <td>Smoke Alarm</td>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>N/A</td>     
-                  </tr>
-                  <tr>
-                  <td>CM Alarm</td>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>N/A</td>
-                  </tr>  
-              </tbody>
-          </table>  
-              </div>  
-          </div>
-
-                
-            <hr class="d-sm-none">
-          </div>
-          <div class="col-sm-8">
-              <h2>Notes</h2>
-              <h5>Notes about the rooms and tenants of the selected property.</h5>
-                          
-              <table class="table table-bordered">
-                  <col width = "20%">
-                  <col width = "80%">
-              <thead>
-                  <tr>
-                  <th>Rooms</th>
-                  <th>Notes</th>
-                  
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                  <td>Hallway</td>
-                  <td id="hall"> </td>
-                  
-                  </tr>
-                  <tr>
-                  <td>Kitchen</td>
-                  <td id="kitchen"></td>
-              
-                  </tr>
-                  <tr>
-                  <td>Living Room</td>
-                  <td id="livingRoom"></td>
-              
-                  </tr>
-                  <tr>
-                      <td>Stairs</td>
-                      <td id="stairsLanding"></td>
-              
-                  </tr>
-                  <tr>
-                      <td>Toilet</td>
-                      <td id="bathroom"></td>
-              
-                  </tr>
-                  <tr>
-                      <td>Room 1</td>
-                      <td id="room1"></td>
-              
-                  </tr>
-                  <tr>
-                      <td>Room 2</td>
-                      <td id="room2"></td>
-              
-                  </tr>
-                  <tr>
-                      <td>Room 3</td>
-                      <td id="room3"></td>
-              
-                  </tr>
-                  <tr>
-                      <td>Room 4</td>
-                      <td id="room4"></td>
-              
-                  </tr>
-              </tbody>
-              </table>
-                
-                <br>
-                <h2>Images</h2>
-                <h5>Images of all appliances</h5><!--constant immages-->
-
-                  <div class="container">
-                    <div class="row">
-                      <div class="row">
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 1"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 2"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 3"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 4"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 5"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 6"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 8"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-                        
-                      </div>
-  
-                    </div>
-                    <h5>Images of faulty appliances</h5><!--constant immages-->
-                    <div class="invisable">
-                    <div class="container">
-                      <div class="row">
-                        <div class="row">
-                          <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 1"><img src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
-
-                          
-                        </div>
-                      </div>
-                      </div>
-          
+            <div class="col-sm-12">
+              <h2>Select A date to view the house Visit Details</h2>
+              <select class="custom-select" data-live-search="true" data-size="4" name="dates" id="dateSelect" onchange="fillForm();">
+                <option></option>
+              </select>
             </div>
-          </fieldset>
+          </div>
+          </form>
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th width="20%">Alarm</th m>
+                    <th width="20%">working</th>
+                    <th>Faults</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Smoke Alarm</td>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td id="smokeAlarm"></td>
+                  </tr>
+                  <tr>
+                    <td>CM Alarm</td>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td id="cmAlarm"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-8">
+          <h2>Notes</h2>
+          <h5>Notes about the rooms and tenants of the selected property.</h5>
+
+          <table class="table table-bordered">
+            <col width="20%">
+            <col width="80%">
+            <thead>
+              <tr>
+                <th>Rooms</th>
+                <th>Notes</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hallway</td>
+                <td id="hall"> </td>
+
+              </tr>
+              <tr>
+                <td>Kitchen</td>
+                <td id="kitchen"></td>
+
+              </tr>
+              <tr>
+                <td>Living Room</td>
+                <td id="livingRoom"></td>
+
+              </tr>
+              <tr>
+                <td>Stairs</td>
+                <td id="stairsLanding"></td>
+
+              </tr>
+              <tr>
+                <td>Toilet</td>
+                <td id="bathroom"></td>
+
+              </tr>
+              <tr>
+                <td>Room 1</td>
+                <td id="room1"></td>
+
+              </tr>
+              <tr>
+                <td>Room 2</td>
+                <td id="room2"></td>
+
+              </tr>
+              <tr>
+                <td>Room 3</td>
+                <td id="room3"></td>
+
+              </tr>
+              <tr>
+                <td>Room 4</td>
+                <td id="room4"></td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <br>
+          <h2>Images</h2>
+          <h5>Images of all appliances</h5>
+          <!--constant immages-->
+
+          <div class="container">
+            <div class="row">
+              <div class="row">
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 1"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 2"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 3"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 4"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 5"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 6"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 8"><img src="images/saviourTrustLogo.PNG"
+                      class="thumbnail img-responsive"></a></div>
+
+              </div>
+
+            </div>
+            <h5>Images of faulty appliances</h5>
+            <!--constant immages-->
+            <div class="invisable">
+              <div class="container">
+                <div class="row">
+                  <div class="row">
+                    <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 1"><img
+                          src="images/saviourTrustLogo.PNG" class="thumbnail img-responsive"></a></div>
+
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+  </fieldset>
 
 </body>
 
-
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-  /*var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
-
-  function validatePassword() {
-    if (password.value != confirm_password.value) {
-      confirm_password.setCustomValidity("Passwords Don't Match");
-    } else {
-      confirm_password.setCustomValidity('');
-    }
-  }*/
-
   // form to fill in the visit 
-  function fillForm() {
-    var selected = document.getElementsByName("houseId")[0].selectedIndex+1;
-    
-    $.post('/loadVisit', {houseId: selected}, function(data, status){
-    console.log(data);
-    
-    document.getElementById("hall").innerHTML = data.hall;
-    document.getElementById("kitchen").innerHTML = data.kitchen;
-    document.getElementById("livingRoom").innerHTML = data.livingRoom;
-    document.getElementById("stairsLanding").innerHTML = data.stairsLanding;
-    document.getElementById("bathroom").innerHTML = data.bathroom;
-    document.getElementById("room1").innerHTML = data.room1;
-    document.getElementById("room2").innerHTML = data.room2;
-    document.getElementById("room3").innerHTML = data.room3;
-    document.getElementById("room4").innerHTML = data.room4;
-    
-  });
+  var date = document.getElementById("dateSelect");
 
 
+  function clearList(callback) {
+    // clearing the select menu
+    console.log("clear list")
+
+    for (var i = date.length; i != 0; i--) {
+
+      date.remove(i);
+    }
+    loadDates(function(){});
+
+    callback();
+  }
+
+    function fillForm() {
+      var selectedHouse = document.getElementsByName("houseId")[0].selectedIndex + 1;
+      var selectedDate = convertDate($("#dateSelect option:selected").html(), function(){});
+      console.log(selectedDate);
+        $.post('/loadVisit', { houseId: selectedHouse, dateOfVisit: selectedDate }, function (data, status) {
+          //console.log(data);
+
+          document.getElementById("hall").innerHTML = data.hall;
+          document.getElementById("kitchen").innerHTML = data.kitchen;
+          document.getElementById("livingRoom").innerHTML = data.livingRoom;
+          document.getElementById("stairsLanding").innerHTML = data.stairsLanding;
+          document.getElementById("bathroom").innerHTML = data.bathroom;
+          document.getElementById("smokeAlarm").innerHTML = data.smokeAlarm;
+          document.getElementById("cmAlarm").innerHTML = data.cmAlarm;
+          document.getElementById("room1").innerHTML = data.room1;
+          document.getElementById("room2").innerHTML = data.room2;
+          document.getElementById("room3").innerHTML = data.room3;
+          document.getElementById("room4").innerHTML = data.room4;
+        
+
+        });
+
+      }
+
+      function loadDates(callback) {
+        var selected = document.getElementsByName("houseId")[0].selectedIndex + 1;
+
+        $.post('/loadDates', { houseId: selected }, function (data, status) {
+
+      // console.dir(data);
+      for (let i = 0; i < data.length; i++) {
+        console.log(data[i].dateOfVisit);
+        //console.log(data[i].dateOfVisit);
+
+        // getting date and formatting to uk
+        var dateFormat = new Date(data[i].dateOfVisit);
+        var formatted_date =  dateFormat.getDate() + "-" + (("0" + (dateFormat.getMonth() + 1)).slice(-2)) + "-" +  dateFormat.getFullYear();
+        console.log(formatted_date);
+
+
+        // displaying list of housevisit dates
+        var option = document.createElement("option");
+        option.setAttribute("innerHTML", formatted_date);
+        var optionName = document.createTextNode(formatted_date);
+        option.appendChild(optionName);
+        date.appendChild(option);
+
+        }
+          callback();
+
+        });
+      }
+
+      function convertDate(dateString, callback){
+    var dateparts = dateString.split("-");
+    var newDate = dateparts[2]+"-"+dateparts[1]+"-"+dateparts[0];
+    callback();
+
+    return newDate;
 }
-
+          
+      
+        
   //password.onchange = validatePassword;
   //confirm_password.onkeyup = validatePassword;
-
 </script>
+
 
 <%- include partials/footer.ejs %>
