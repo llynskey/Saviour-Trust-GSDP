@@ -167,7 +167,29 @@ module.exports.getWorker = callback => {
   });
 };
 
+// function to get an array of dates that a house has been visited
+module.exports.getVisitDates = (req, callback) =>
+{
+  var houseId = req.body.houseId;
 
+  filter = [houseId];
+
+  var query = ("SELECT dateOfVisit from housevisit where houseId = ? ORDER BY visitId DESC LIMIT 0, 1");
+  connection.getConnection(function(err, connection)
+  {
+    connection.query(query, filter, function(err, dbRes)
+    {
+      if (err) console.log(err);
+      let visitDates = [];
+
+      visitDates = dbRes;
+
+
+      callback(visitDates);
+
+    });
+  });
+}
 module.exports.getLatestHouseVisit = (req, callback)=> {
 // getting houseId
 var houseId = req.body.houseId;

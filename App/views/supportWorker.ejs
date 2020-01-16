@@ -13,7 +13,7 @@
           <div class="row">
             <div class = "col-sm-12">
               <h2>Select A Property to view information about</h2>
-              <select class="selectpicker" data-live-search="true" name="houseId">
+              <select class="selectpicker" data-live-search="true" name="houseId" onchange="fillForm()">
                 <% for(var a=0; a < houses.length; a++) { %>
                   <option value="<%=houseIds[a]%>"> 
                   <%= houses[a] %> </option>
@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-sm-12">
             <h2>Select A date to view the house Visit Details</h2>
-              <select class="selectpicker" data-live-search="true" name="dates" id="dateSelect" onchange="fillForm()">
+              <select class="selectpicker" data-live-search="true" name="dates" id="dateSelect" >
                                     
                 </select>
             </div>
@@ -171,7 +171,7 @@
 
   // form to fill in the visit 
   function fillForm() {
-    var selected = document.getElementsByClassName("selectSupport")[0].selectedIndex+1;
+    var selected = document.getElementsByName("houseId")[0].selectedIndex+1;
     
     $.post('/loadVisit', {houseId: selected}, function(data, status){
     console.log(data);
@@ -195,3 +195,5 @@
   //confirm_password.onkeyup = validatePassword;
 
 </script>
+
+<%- include partials/footer.ejs %>
