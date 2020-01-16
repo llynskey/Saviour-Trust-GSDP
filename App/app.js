@@ -9,7 +9,7 @@ var db = require('./db');
 
 const sqlConnection = require('./controllers/DBUtils');
 
-var visitHouseRouter = require('./routes/houseVisitSubmit');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitRouter = require('./routes/VisitForm');
@@ -20,6 +20,7 @@ var AdminPageRouter = require('./routes/AdminPage');
 var createPropertyRouter = require('./routes/createProperty');
 var loadVisitRouter = require('./routes/loadVisit');
 var emailRouter = require("./routes/emailRouter");
+var visitHouseRouter = require('./routes/houseVisitSubmit');
 //var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 

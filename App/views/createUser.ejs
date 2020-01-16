@@ -7,56 +7,52 @@
     <p><em>Create New User For the system</em></p>
   </header>
   <fieldset>
-    <div class='row'>
-      <label for='firstName'>Name</label>
-    </div>
-    <div class="row">
-      <input id="firstName" type="createFirstName" name='FirstName' type='text' />
-    </div>
-
-    <fieldset class='legacy-form-row'>
-      <label for='typeOfUser'>type of user</label>
-      <div class="row">
-        <div class="column">
-          <label for='user-type-1' class='radio-label'>House Visitor</label>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="userId">User ID</label>
+          <input type="number" class="form-control" id="userId" name="userId"placeholder="User ID">
         </div>
-        <div class="column">
-          <input id='user-type-1' name='user-type' type='radio' value='House Visitor' />
+        <div class="form-group col-md-4">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name">
         </div>
       </div>
-      <div class="row">
-        <div class="column">
-          <label for='user-type-2' class='radio-label'>Support Worker</label>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="dob">DOB</label>
+          <input type="date" class="form-control" id="dob" name="dob" placeholder="Date Of Birth">
         </div>
-        <div class="column">
-          <input id='user-type-1' name='user-type' type='radio' value='Support Worker' />
+        <div class="form-group col-md-4">
+          <label for="gender">Gender</label>
+          <select id="gender" name ="gender" class="form-control">
+            <option selected>Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="type">Type</label>
+          <select id="type" name ="type" class="form-control">
+            <option selected>Choose...</option>
+            <option>House Visitor</option>
+            <option>Support Worker</option>
+            <option>Admin</option>
+          </select>
         </div>
       </div>
-      <div class="row">
-        <div class="column">
-          <label for='user-type-3' class='radio-label'>Admin</label>
 
-        </div>
-        <div class="column">
-          <input id='user-type-1' name='user-type' type='radio' value='Support Worker' checked />
-        </div>
+      <div>
+        <button type="submit" class="pure-button pure-button-primary">Create</button>
       </div>
-    </fieldset>
-
-    <div class='row'>
-      <label for='password'>Password</label>
-
-    </div>
-
-    <div class="row">
-      <input type="password" placeholder="Password" id="password" required>
-      <input type="password" placeholder="Confirm Password" id="confirm_password" required>
-
-    </div>
-    <div>
-      <button type="submit" class="pure-button pure-button-primary">Confirm</button>
-      </fieldset>
-    </div>
+     
+    </form>
 
   </fieldset>
 </body>
@@ -73,6 +69,7 @@
 
   password.onchange = validatePassword;
   confirm_password.onkeyup = validatePassword;
+
 
 </script>
 <%- include partials/footer.ejs %>

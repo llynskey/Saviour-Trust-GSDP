@@ -1,17 +1,27 @@
 var records = [
   {
     id: 1,
-    username: "jack",
-    password: "secret",
-    displayName: "Jack",
-    emails: [{ value: "jack@example.com" }]
+    username: "admin",
+    password: "admin",
+    displayName: "Administrator",
+    emails: [{ value: "" }],
+    role:"AdminPage"
   },
   {
     id: 2,
-    username: "jill",
-    password: "birthday",
-    displayName: "Jill",
-    emails: [{ value: "jill@example.com" }]
+    username: "support",
+    password: "support",
+    displayName: "Support Worker",
+    emails: [{ value: "" }],
+    role:"supportWorker"
+  },
+  {
+    id: 3,
+    username: "visit",
+    password: "visit",
+    displayName: "Support Worker",
+    emails: [{ value: "" }],
+    role: "visit"
   }
 ];
 
