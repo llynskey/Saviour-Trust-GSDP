@@ -24,25 +24,41 @@ var visitHouseRouter = require('./routes/houseVisitSubmit');
 var visitDatesRouter = require('./routes/loadDates');
 var submitNewUserRouter = require('./routes/newUserSubmit');
 var submitNewHouseRouter = require('./routes/createHouseSubmit')
-
+//var selectHouseVisitRouter = require ('./routes/viewSelectedHouseVisit');
 
 
 passport.use(new strategy(
   function(username, password, cb) {
     sqlConnection.validateUser(username,function(u){
+      console.log("stuff" + u);
     db.users.loadDbUser(u);
     
+    console.log("boi");
     db.users.findByUsername(username, function(err, user) {
+      console.log("called");
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
       if (user.password != password) { return cb(null, false); }
       return cb(null, user);
     })});
+    /*sqlConnection.validateUser(username, function(dbpassword){
+      if (password != dbpassword) { return cb(null, false); }
+      return cb(null, user);
+    });*/
 
     
   }));
 
+passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
 
+passport.deserializeUser(function(id, cb) {
+  db.users.findById(id, function (err, user) {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
 
 var app = express();
 // view engine setup
@@ -69,7 +85,7 @@ app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
 app.use('/houseVisit', visitHouseRouter);
 app.use('/login', indexRouter);
-app.use('/createHouse', createPropertyRouter);
+app.use('/createProperty', createPropertyRouter);
 app.use('/createUser', createUserRouter);
 app.use('/adminPage', AdminPageRouter);
 
@@ -78,6 +94,7 @@ app.use('/emailRouter', emailRouter);
 app.use('/loadDates', visitDatesRouter);
 app.use('/submitNewUser', submitNewUserRouter);
 app.use('/submitNewHouse', submitNewHouseRouter);
+//app.use('/viewSelectedVisit', selectHouseVisitRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="row">
-          <!-- <p class="labelVisit">Logged In: <%=//user.displayName%></p> -->
+           <p class="labelVisit">Logged In: <%=user.displayName%></p> 
         </div>
 
         <form action="/houseVisit" method="POST">
@@ -25,11 +25,11 @@
           <div class="col-md-12">
             <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" onchange="getHouseAddress(this);">
               <option selected>Which location are you visiting...</option>
-              <!-- <%// for(var a=0; a < houses.length; a++) { %>
-              <option value="<%=//houseIds[a]%>">
-                <%//= houses[a]%>
+              <% for(var a=0; a < houses.length; a++) { %>
+              <option value="<%=houseIds[a]%>">
+                <%= houses[a]%>
                 </option>
-              <%// } %> -->
+              <% } %> 
             </select>
           </div>
         </div>

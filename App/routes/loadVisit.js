@@ -15,7 +15,6 @@ router.post("/", function(req, res) {
     room3Notes,
     room4Notes
   ) {
-    console.log("READ FROM DATABASE BREH");
 
     //res.send(200);
     res.json({

@@ -43,15 +43,15 @@ exports.addNewUser = function newUser(req){
 
 exports.loadDbUser = function(user)
 {
-  console.log("user[]" + user[0].userType);
+ // console.log("user[]" + user[0].userType);
 
   var newuser = {
-    id: 4,
+    id: records.length+1,
     username: user[0].username,
     password: user[0].userpassword,
     firstname: user[0].firstname,
     lastname: user[0].lastname,
-    displayName: user[0].firstname+" "+user.lastname,
+    displayName: user[0].firstname+" "+user[0].lastname,
     DOB: user[0].dob,
     role: user[0].userType
   }

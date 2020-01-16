@@ -1,7 +1,7 @@
 <%- include partials/header.ejs %>
-<h1><%= error.status %></h1>
-<html>
+
 <body>
+    <h1><%= error.status %></h1>
 <fieldset>
     <h2>Page Not Found</h2>
     <h4>Return To loggin Page Using Button</h4>
@@ -10,7 +10,8 @@
     </a>
 </fieldset>
 </body>
-</html>
+
+
 
 <pre><%= error.stack %></pre>
 <%- include partials/footer.ejs %>
