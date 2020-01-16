@@ -12,6 +12,7 @@
         <div class="row">
           <p class="labelVisit">Logged In: <%=user.displayName%></p>
         </div>
+        <form action="/houseVisit" method="POST">
         <div class="row">
           <div class="col-md-12">
             <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;">
@@ -29,7 +30,6 @@
   </header>
 
   <fieldset>
-    <form action="/houseVisit" method="POST">
       <div class="form-row">
         <div class="col-md-12">
           <label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label>
