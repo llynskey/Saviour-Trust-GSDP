@@ -35,9 +35,9 @@
         </div>
       </div>
     </div>
-  </header>
+    </header>
 
-  <fieldset>
+    <fieldset>
       <div class="form-row">
         <div class="col-md-12">
           <label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label>
@@ -62,7 +62,7 @@
           <input type="text" name="stairsLanding" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
         </div>
       </div>
-      <div class="form-row">>
+      <div class="form-row">
         <div class="col-md-12">
           <label for="BathroomCheck" class="labelVisit">BathroomCheck</label>
           <input type="text" name="bathroom" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom">
@@ -179,18 +179,17 @@
         </div>
       </div>
 
-    
+    </form>
     <div class="form-row">
       <div class="col-md-6">
         <input type="text" name="emailText" class="form-control" id="emailText" placeholder="Write request to worker...">
       </div>
       <div class="col-md-6">
-        <button id="sendButton" type="submit" name="sendEmail" onclick ="sendEmail();">Send</button>
+        <button id="" type="submit" name="sendEmail" onclick ="sendEmail();">Send</button>
       </div>
     </div>
     
   </fieldset>
-</form>
 </body>
 
 
@@ -201,15 +200,15 @@ var emailText;
 var houseAddress;
 function sendEmail() {
   emailText = document.getElementById("emailText").value;
+  console.log(emailText);
     //var houseaddress = getHouseAddress(houses);
     $.post('/emailRouter', {houseaddress: houseAddress, email: emailText}, function(data, status)
     {
     });
 
   }
-  function getHouseAddress(houses) {
+  function getHouseAddress(houses,) {
     houseAddress = houses.options[houses.selectedIndex].text;
-    alert(houseAddress);
 }
 </script>
 
