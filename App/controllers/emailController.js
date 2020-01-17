@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport({
     var emailText = req.body.email
     console.log(emailText);
     var houseAddress = req.body.houseaddress;
-    console.log(houseAddress);
+    console.log("address"+houseAddress);
     
     //configuring the email
     var mailOptions = {

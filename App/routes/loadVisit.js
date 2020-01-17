@@ -4,18 +4,19 @@ var dbUtils = require("../controllers/DBUtils");
 
 router.post("/", function(req, res) {
   // console.dir(req.body);
-  dbUtils.getLatestHouseVisit(req, function(
+  dbUtils.getVisitByDate(req, function(
     hallNotes,
     kitchenNotes,
     livingRoomNotes,
     stairsNotes,
     bathroomNotes,
+    smokeAlarmNotes,
+    cmAlarmNotes,
     room1Notes,
     room2Notes,
     room3Notes,
     room4Notes
   ) {
-    console.log("READ FROM DATABASE BREH");
 
     //res.send(200);
     res.json({
@@ -24,6 +25,8 @@ router.post("/", function(req, res) {
       livingRoom: livingRoomNotes,
       stairsLanding: stairsNotes,
       bathroom: bathroomNotes,
+      smokeAlarm: smokeAlarmNotes,
+      cmAlarm: cmAlarmNotes,
       room1: room1Notes,
       room2: room2Notes,
       room3: room3Notes,

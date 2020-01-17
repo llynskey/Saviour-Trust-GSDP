@@ -1,3 +1,4 @@
+var db = require('../controllers/DBUtils');
 var records = [
   {
     id: 1,
@@ -25,6 +26,42 @@ var records = [
   }
 ];
 
+exports.addNewUser = function newUser(req){
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
+  var user = {
+    username: req.body.username,
+    password: req.body.password,
+    firstname: firstname,
+    lastname: lastname,
+    displayName: firstname+" "+lastname,
+    DOB: req.body.DOB,
+    Type: req.body.Type
+  }
+  records.push(user);
+}
+
+exports.loadDbUser = function(user)
+{
+ // console.log("user[]" + user[0].userType);
+
+  var newuser = {
+    id: records.length+1,
+    username: user[0].username,
+    password: user[0].userpassword,
+    firstname: user[0].firstname,
+    lastname: user[0].lastname,
+    displayName: user[0].firstname+" "+user[0].lastname,
+    DOB: user[0].dob,
+    role: user[0].userType
+  }
+  console.log("DB" + newuser.username);
+  records.push(newuser);
+  
+}
+
+
+
 exports.findById = function(id, cb) {
   process.nextTick(function() {
     var idx = id - 1;
@@ -47,3 +84,9 @@ exports.findByUsername = function(username, cb) {
     return cb(null, null);
   });
 };
+
+ /*dbUtils.validateUser(username, function(password) {  
+
+      var userPassword = password;
+      console.log(userPassword);
+    });*/
