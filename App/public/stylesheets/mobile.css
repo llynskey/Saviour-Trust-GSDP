@@ -16,6 +16,12 @@ body {
   background-attachment: fixed;
 }
 
+/*Map*/
+
+#mapid { height: 180px; }
+
+
+
 a {
   color: #00B7FF;
 }
@@ -67,7 +73,7 @@ a {
   border-radius: 3px;
   opacity: 0.9;
   
-  width: 60%;
+  width: 70%;
   margin: 40px 0;
   padding: 50px;
 }
@@ -153,6 +159,7 @@ input{
   height: 38px;
   font-size: 30px;
   margin-top: 4px;
+  
 }
 
 

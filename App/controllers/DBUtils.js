@@ -158,14 +158,16 @@ var dateOfVisit = req.body.dateOfVisit;
 filter  = [houseId, dateOfVisit];
 console.dir(filter);
 // quer to get an array of with all the latest visit details found by appropriate houseId
-var query = "SELECT * FROM housevisit WHERE houseId = ? AND dateOfVisit = ?";
+var query = "SELECT * FROM housevisit WHERE houseId = ? AND dateOfVisit = ? ORDER BY visitId DESC LIMIT 0, 1";
 connection.getConnection(function(err, connection) {
   // creating array and storing house names
   connection.query(query, filter, function(err, dbRes) {
     if (err) console.log(err);
     let visitArray = [];
-    
     visitArray = dbRes;
+
+    if (visitArray[0] != undefined)
+    {
     console.dir(dbRes);
     var hallNotes = visitArray[0].hall;
     var kitchenNotes = visitArray[0].kitchen;
@@ -178,12 +180,20 @@ connection.getConnection(function(err, connection) {
     var room2Notes = visitArray[0].room2Notes;
     var room3Notes = visitArray[0].room3Notes;
     var room4Notes = visitArray[0].room4Notes;
-    
+    var error;
      //for loop to create address strings and send to array
-
+     console.log("defined");
+     callback(error, hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes, smokeAlarmNotes, cmAlarmNotes,room1Notes,room2Notes,room3Notes,room4Notes);
+    }
+     
+      
+     else
+     {
+       error = "error";
+       console.log("undefined")
+       callback(error);
+     }
     
-    callback(hallNotes, kitchenNotes,livingRoomNotes,stairsNotes,bathroomNotes, smokeAlarmNotes, cmAlarmNotes,room1Notes,room2Notes,room3Notes,room4Notes);
- 
   });
 });
 };
@@ -259,10 +269,19 @@ module.exports.validateUser = (username, callback) => {
     if (err) console.log(err);
     // getting user
     var user = [];
+    
     user = dbRes;
-
-
-  callback(user);
+    console.log("user" + user);
+    if (user[0] != undefined)
+    {
+      console.log("defined");
+      callback(user);
+    }
+    else
+    {
+      console.log("undefined")
+      callback();
+    }
 
 });
 };

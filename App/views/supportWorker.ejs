@@ -32,7 +32,7 @@
           <div class="row">
             <div class="col-sm-12">
               <h2>Select A date to view the house Visit Details</h2>
-              <select class="custom-select" data-live-search="true" data-size="4" name="dates" id="dateSelect" onchange="fillForm();">
+              <select class="custom-select" data-live-search="true" data-size="4" name="dates" id="dateSelect" onchange="fillForm(function(){});">
                 <option></option>
               </select>
             </div>
@@ -194,13 +194,18 @@
     callback();
   }
 
-    function fillForm() {
+    function fillForm(callback) {
       var selectedHouse = document.getElementsByName("houseId")[0].selectedIndex + 1;
       var selectedDate = convertDate($("#dateSelect option:selected").html(), function(){});
       console.log(selectedDate);
         $.post('/loadVisit', { houseId: selectedHouse, dateOfVisit: selectedDate }, function (data, status) {
           //console.log(data);
 
+
+          if(data.error == "error")
+          {}
+          else
+          {
           document.getElementById("hall").innerHTML = data.hall;
           document.getElementById("kitchen").innerHTML = data.kitchen;
           document.getElementById("livingRoom").innerHTML = data.livingRoom;
@@ -212,10 +217,10 @@
           document.getElementById("room2").innerHTML = data.room2;
           document.getElementById("room3").innerHTML = data.room3;
           document.getElementById("room4").innerHTML = data.room4;
-        
+          }
 
         });
-
+        callback();
       }
 
       function loadDates(callback) {

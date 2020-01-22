@@ -4,10 +4,15 @@
     <div class="row">
       <div class="col-md-7">
         <img src="images/SaviourTrustLogo.png" style="width: 100%;" alt=""/>
+         
+       
       </div>
       <div class="col-md-5">
         <div class="row">
           <h1>House Visits | VisitForm </h1>
+        </div>
+        <div class="row">
+           <p class="labelVisit">Logged In: <%=user.displayName%></p> 
         </div>
         <div class="form-row">
           <div class="col-md-12">
@@ -15,16 +20,14 @@
               <button id="loginButton" >Logout</button>
             </a>
           </div>
-        </div>
-        <div class="row">
-           <p class="labelVisit">Logged In: <%=user.displayName%></p> 
-        </div>
-
+          </div>
+      
+ 
         <form action="/houseVisit" method="POST">
         <div class="row">
           <div class="col-md-12">
             <select class="selectpicker" data-live-search="true" name="houseId" style="width: 100%;" data-size="4" onchange="getHouseAddress(this);">
-              <option selected>Which location are you visiting...</option>
+               <option>Select Location..</option>
               <% for(var a=0; a < houses.length; a++) { %>
               <option value="<%=houseIds[a]%>">
                 <%= houses[a]%>
@@ -35,37 +38,44 @@
         </div>
       </div>
     </div>
-    </header>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="mapid"></div>
+      </div>
+       
+    </div>
+  </header> 
 
     <fieldset>
       <div class="form-row">
         <div class="col-md-12">
           <label for="hallwayCheck" class="labelVisit">Hallway(Include Cubby hole)</label>
-          <input type="text" name="hall" class="form-control" id="inputvisits" placeholder="Notes about hallway"></div>
+          <input type="text" name="hall" class="form-control" id="inputvisits" placeholder="Notes about hallway" required></div>
       </div>
 
       <div class="form-row">
         <div class="col-md-12">
           <label for="KitchenCheck" class="labelVisit">Kitchen</label>
-          <input type="text" name="kitchen" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen">
+          <input type="text" name="kitchen" class="form-control" id="KitchenCheck" placeholder="Notes about kitchen" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-12">
           <label for="LivingRoomCheck" class="labelVisit">Living Room</label>
-          <input type="text" name="livingRoom" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room">  
+          <input type="text" name="livingRoom" class="form-control" id="LivingRoomCheck" placeholder="Notes about Living Room" required>  
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-12">
           <label for="StairsCheck" class="labelVisit">Stairs/Landing</label>
-          <input type="text" name="stairsLanding" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
+          <input type="text" name="stairsLanding" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-12">
           <label for="BathroomCheck" class="labelVisit">BathroomCheck</label>
-          <input type="text" name="bathroom" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom">
+          <input type="text" name="bathroom" class="form-control" id="BathroomCheck" placeholder="Notes about Bathroom" required>
         </div>
       </div>
       <div class="form-row">
@@ -88,7 +98,7 @@
         <div class="col-md-6">
           <label class="custom-control-label" for="defaultUnchecked1">Tenant Present?</label>
         </div>
-        <input type="text" name="room1Notes" class="form-control" id="Room1Check " placeholder="Notes about Room 1">    
+        <input type="text" name="room1Notes" class="form-control" id="Room1Check " placeholder="Notes about Room 1" required>    
       </div>
       
       <div class="form-row">
@@ -101,7 +111,7 @@
         <div class="col-md-6">
           <label class="custom-control-label" for="defaultUnchecked2">Tenant Present?</label>
         </div>
-        <input type="text" name="room2Notes" class="form-control" id="Room2Check " placeholder="Notes about Room 2">
+        <input type="text" name="room2Notes" class="form-control" id="Room2Check " placeholder="Notes about Room 2" required>
       </div>
 
       <div class="form-row">
@@ -114,7 +124,7 @@
         <div class="col-md-6">
           <label class="custom-control-label" for="defaultUnchecked3">Tenant Present?</label>
         </div>
-        <input type="text" name="room3Notes" class="form-control" id="Room3Check " placeholder="Notes about Room 3"></div>
+        <input type="text" name="room3Notes" class="form-control" id="Room3Check " placeholder="Notes about Room 3" required></div>
       </div>
 
       <div class="form-row">
@@ -127,7 +137,7 @@
         <div class="col-md-6">
           <label class="custom-control-label" for="defaultUnchecked4">Tenant Present?</label>
         </div>
-        <input type="text" name="room4Notes" class="form-control" id="Room4Check " placeholder="Notes about Room 4"></div>
+        <input type="text" name="room4Notes" class="form-control" id="Room4Check " placeholder="Notes about Room 4" required></div>
       </div>
 
       <div class="form-row">
@@ -140,7 +150,7 @@
         <div class="col-md-2">
           <label class="custom-control-label" for="alarmCheck1"></label>
         </div>
-        <input type="text" name="smokeAlarmFault" class="form-control" id="Alarm1Faults" placeholder="Fault notes">
+        <input type="text" name="smokeAlarmFault" class="form-control" id="Alarm1Faults" placeholder="Fault notes" required>
       </div>
 
       <div class="form-row">
@@ -154,23 +164,27 @@
         </div>
         <div class="col-md-2">
         </div>
-        <input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes">
+        <input type="text" name="cmAlarmFault" class="form-control" id="cmAlarmFaults" placeholder="Fault notes" required>
       </div>
 
       <div class="form-row">
         <div class="col-md-12">
           <label class="visitFormLbl" for="Applicances">FRIDGE/FREEZER | WASHER | MICROWAVE | KETTLE | HOOVER | FRYER | TOASTER</label>
         </div>
-        <input type="text" name="electronicsNote" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing">
+        <input type="text" name="electronicsNote" class="form-control" id="StairsCheck" placeholder="Notes about Stairs/Landing" required>
       </div>
 
       <div class="form-row">
         <div class="col-md-12">
-          <label class="visitFormLbl" for="inlineCheckbox1" id="t1-1">Image of Fault</label> 
-        </div>
-        <div class="col-md-12">
-          <input type="file" class="visit-form-control" id="t1-1" multiple>
-        </div>
+    
+            <label for="files">Select file: </label>
+            <div>
+              <input id="files" type="file" multiple/>
+              </div>
+              <div>
+                <output id="result" >
+              </div>
+      </div>
       </div>
 
       <div class="form-row">
@@ -180,13 +194,32 @@
       </div>
 
     </form>
+    <br>
     <div class="form-row">
+
+       
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-6">
+        <label>Send an Email to a Support worker</label>
+      </div>
+    
+    </div>
+    <div class="col-md-4">
+
+    </div>
+    <div class="form-row">
+      
+      <div class="col-md-2">
+      </div>
       <div class="col-md-6">
         <input type="text" name="emailText" class="form-control" id="emailText" placeholder="Write request to worker...">
       </div>
-      <div class="col-md-6">
-        <button id="" type="submit" name="sendEmail" onclick ="sendEmail();">Send</button>
-      </div>
+      <!--<div class="col-md-6"> -->
+        <button id="sendButton" type="submit" name="sendEmail" onclick ="sendEmail();">Send</button>
+     <!-- </div> -->
+    </div>
+    <div class="col-md-4">
     </div>
     
   </fieldset>
@@ -201,15 +234,79 @@ var houseAddress;
 function sendEmail() {
   emailText = document.getElementById("emailText").value;
   console.log(emailText);
+  alert("Email sent!")
     //var houseaddress = getHouseAddress(houses);
     $.post('/emailRouter', {houseaddress: houseAddress, email: emailText}, function(data, status)
     {
+
     });
 
   }
   function getHouseAddress(houses,) {
     houseAddress = houses.options[houses.selectedIndex].text;
 }
+
+var mymap = L.map('mapid').setView([53.38, -1.465], 13);
+var marker = L.marker([53.379105, -1.464706]).addTo(mymap);
+marker.bindPopup("<b>My Location</b><br>Sheffield Hallam University.").openPopup();
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 13,
+    id: 'mapbox/streets-v11',
+    accessToken: 'sk.eyJ1Ijoid2lsbHNpbWlzdGVyIiwiYSI6ImNrNWgwNHVwZTBjZnAzZHBicm1lamU5Y3cifQ.P-2y9sHtJJJk3PAo9ySa0A'
+}).addTo(mymap);
+
+
+//below for thumbnails
+
+window.onload = function(){
+        
+        //Check File API support
+        if(window.File && window.FileList && window.FileReader)
+        {
+            var filesInput = document.getElementById("files");
+            
+            filesInput.addEventListener("change", function(event){
+                
+                var files = event.target.files; //FileList object
+                var output = document.getElementById("result");
+                
+                for(var i = 0; i< files.length; i++)
+                {
+                    var file = files[i];
+                    
+                    //Only pics
+                    if(!file.type.match('image'))
+                      continue;
+                    
+                    var picReader = new FileReader();
+                    
+                    picReader.addEventListener("load",function(event){
+                        
+                        var picFile = event.target;
+                        
+                        var div = document.createElement("column");
+                        
+                        div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                                "title='" + picFile.name + "'/>";
+                        
+                        output.insertBefore(div,null);            
+                    
+                    });
+                    
+                     //Read the image
+                    picReader.readAsDataURL(file);
+                }                               
+               
+            });
+        }
+        else
+        {
+            console.log("Your browser does not support File API");
+        }
+    }
+
 </script>
 
 

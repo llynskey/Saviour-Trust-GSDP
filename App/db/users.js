@@ -44,7 +44,8 @@ exports.addNewUser = function newUser(req){
 exports.loadDbUser = function(user)
 {
  // console.log("user[]" + user[0].userType);
-
+if(user != undefined)
+{
   var newuser = {
     id: records.length+1,
     username: user[0].username,
@@ -57,7 +58,8 @@ exports.loadDbUser = function(user)
   }
   console.log("DB" + newuser.username);
   records.push(newuser);
-  
+  }
+  console.log("not user");
 }
 
 

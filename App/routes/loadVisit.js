@@ -5,6 +5,8 @@ var dbUtils = require("../controllers/DBUtils");
 router.post("/", function(req, res) {
   // console.dir(req.body);
   dbUtils.getVisitByDate(req, function(
+
+    error,
     hallNotes,
     kitchenNotes,
     livingRoomNotes,
@@ -17,7 +19,12 @@ router.post("/", function(req, res) {
     room3Notes,
     room4Notes
   ) {
-
+    if(error == "error")
+    {
+      
+    }
+    else
+    {
     //res.send(200);
     res.json({
       hall: hallNotes,
@@ -32,6 +39,7 @@ router.post("/", function(req, res) {
       room3: room3Notes,
       room4: room4Notes
     });
+  }
   });
 });
 
