@@ -65,12 +65,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/visit', visitRouter);
+app.use('/houseVisit', visitRouter);
 app.use('/supportWorker', supportRouter);
 app.use('/logout', logoutRouter);
 app.use('/houseVisit', visitHouseRouter);
 app.use('/login', indexRouter);
-app.use('/createHouse', createPropertyRouter);
+app.use('/createProperty', createPropertyRouter);
 app.use('/createUser', createUserRouter);
 app.use('/adminPage', AdminPageRouter);
 
